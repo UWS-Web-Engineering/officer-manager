@@ -16,15 +16,30 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/queries',function(){
+    return view('chat');
+});
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
 Route::get('/operators', function () {
     return view('operators');
 });
-Route::get('/signup', function () {
-    return view('register');
+Route::get('/farmer_response',function(){
+    return view('farmer_response');
+});
+Route::get('/farmerdetails',function(){
+    return view('farmerdetails');
 });
 Route::get('/farmerslist',function(){
     return view('farmerslist');
+});
+Route::get('/negotiation',function(){
+    return view('negotiation');
+});
+Route::get('/product',function(){
+    return view('productlist');
+});
+Route::get('/status',function(){
+    return view('status');
 });
