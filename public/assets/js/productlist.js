@@ -14,6 +14,14 @@ function opensuccess() {
     z.className = "";
     z.className = "modal show-modal";
 }
+function closesuccess()
+{
+    var x = document.getElementById("successmodal");
+    x.className = "modal";
+    var x1 = document.getElementById("modal");
+    x1.className = "modal";
+    document.location.href = "/product";
+}
 var loadTable = document.getElementById('myTable');
 
 var xmlhttp = new XMLHttpRequest();

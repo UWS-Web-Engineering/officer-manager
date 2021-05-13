@@ -15,7 +15,7 @@
         <div class="header-right">
             <a href="/product">Product</a>
             <a href="/farmerslist">Farmers</a>
-            <a href="/Queries">Queries</a>
+            <a href="/queries">Queries</a>
             <a class="active" href="/negotiation">Negotiations</a>
         </div>
     </div>
