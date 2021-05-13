@@ -25,3 +25,6 @@ Route::get('/operators', function () {
 Route::get('/signup', function () {
     return view('register');
 });
+Route::get('/farmerslist',function(){
+    return view('farmerslist');
+});
