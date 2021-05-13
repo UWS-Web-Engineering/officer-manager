@@ -1,0 +1,8 @@
+th,
+td {
+    text-align: center;
+}
+
+.table-row {
+    cursor: pointer;
+}

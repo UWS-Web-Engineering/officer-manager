@@ -10,10 +10,10 @@
     <div class="header">
         <a href="#default" class="logo">CompanyLogo</a>
         <div class="header-right">
-            <a href="productlist.html">Product</a>
-            <a class="active" href="farmerslist.html">Farmers</a>
-            <a href="chat.html">Quries</a>
-            <a href="negotiation.html">Negotiations</a>
+            <a href="/product">Product</a>
+            <a class="active" href="/farmerslist">Farmers</a>
+            <a href="/chat">Queries</a>
+            <a href="/negotiation">Negotiations</a>
         </div>
     </div>
     <div style="overflow-x:auto;">
