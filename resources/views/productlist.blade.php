@@ -84,10 +84,17 @@
                     </div> -->
                     <br>
                     <div class="row">
-                        <input type="button" value="Submit">
+                        <input type="button" value="Submit" onclick="opensuccess()">
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+    <div id="successmodal" class="modal">
+        <div style="width: 28%;height: 150px;" class="modal-content">
+            <span onclick="closesuccess()" class="close-button">x</span>
+            <h4 style="text-align: center;">You have successfully posted your product!</h4>
+            <input style="position:absolute; left:42%" type="button" value="Close" onclick="closesuccess()">
         </div>
     </div>
     <script type="text/javascript" src="/assets/js/productlist.js"></script>
