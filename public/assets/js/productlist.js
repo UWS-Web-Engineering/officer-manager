@@ -10,9 +10,20 @@ function closemodal() {
 }
 
 function opensuccess() {
+    var endpoint = 'https://localhost/product'; 
+    data: $('#myForm').serializeArray()
+$.ajax({ 
+    type: "POST",
+    url: endpoint,
+    data: $('#myForm').serializeArray(),
+    success: function () {
     var z = document.getElementById("successmodal")
     z.className = "";
-    z.className = "modal show-modal";
+    z.className = "modal show-modal";  
+        alert('success post');
+    }
+});
+      
 }
 function closesuccess()
 {
@@ -27,7 +38,6 @@ var loadTable = document.getElementById('myTable');
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.open("GET", "https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1001");
 xmlhttp.onload = function() {
-    console.log(xmlhttp.responseText);
     loadAPI(JSON.parse(xmlhttp.responseText));
 };
 
@@ -51,7 +61,7 @@ function loadAPI(xml) {
             "</td></tr>";
     }
     table += "</table>";
-    console.log(table);
     loadTable.insertAdjacentHTML('beforeend', table);
 }
 xmlhttp.send();
+

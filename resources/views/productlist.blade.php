@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="/assets/css/farmerdetails.css">
     <link rel="stylesheet" href="/assets/css/productlist.css">
     <link rel="stylesheet" href="/assets/css/product_ad.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -32,10 +33,10 @@
             <span onclick="closemodal()" class="close-button">x</span>
             <h2>Add new product</h2>
             <div class="container">
-                <form>
+                <form  id="myform" method="get">
                     <div class="row">
                         <div class="col-25">
-                            <label for="fname">Product Name</label>
+                            <label id="pname">Product Name</label>
                         </div>
                         <div class="col-75">
                             <select id="product" name="product">
@@ -49,15 +50,15 @@
                     </div>
                     <div class="row">
                         <div class="col-25">
-                            <label for="lname">Price /Kg</label>
+                            <label id="plabel">Price /Kg</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="lname" name="price" placeholder="Price set at...">
+                            <input type="text" id="price" name="price" placeholder="Price set at...">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-25">
-                            <label for="qauntity">Qauntity</label>
+                            <label id="qauntitylabel">Qauntity</label>
                         </div>
                         <div class="col-75">
                             <select id="qauntity" name="Qauntity">
@@ -84,7 +85,7 @@
                     </div> -->
                     <br>
                     <div class="row">
-                        <input type="button" value="Submit" onclick="opensuccess()">
+                        <input type="submit" value="Submit" onclick="opensuccess()" >
                     </div>
                 </form>
             </div>
