@@ -10,19 +10,32 @@ function closemodal() {
 }
 
 function opensuccess() {
-    var endpoint = 'https://localhost/product'; 
-    data: $('#myForm').serializeArray()
-$.ajax({ 
-    type: "POST",
-    url: endpoint,
-    data: $('#myForm').serializeArray(),
-    success: function () {
-    var z = document.getElementById("successmodal")
-    z.className = "";
-    z.className = "modal show-modal";  
-        alert('success post');
+
+    let product = {
+        prodname: document.getElementById('prodname').value,
+        prodprice: document.getElementById('prodprice').value,
+        prodqty: document.getElementById('prodqty').value
     }
-});
+    let json = JSON.stringify(product);
+
+    const xhr = new XMLHttpRequest(); 
+    xhr.open("POST", "api/product");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(json);
+
+//     var endpoint = 'https://localhost/api/product'; 
+//     data: $('#myForm').serializeArray()
+// $.ajax({ 
+//     type: "POST",
+//     url: endpoint,
+//     data: $('#myForm').serializeArray(),
+//     success: function () {
+//     var z = document.getElementById("successmodal")
+//     z.className = "";
+//     z.className = "modal show-modal";  
+//         alert('success post');
+//     }
+// });
       
 }
 function closesuccess()
