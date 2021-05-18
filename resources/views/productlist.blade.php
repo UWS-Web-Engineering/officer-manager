@@ -33,13 +33,13 @@
             <span onclick="closemodal()" class="close-button">x</span>
             <h2>Add new product</h2>
             <div class="container">
-                <form  id="myform" method="get">
+                <form  id="myform">
                     <div class="row">
                         <div class="col-25">
                             <label id="pname">Product Name</label>
                         </div>
                         <div class="col-75">
-                            <select id="product" name="product">
+                            <select id="prodname" name="prodname">
                                 <option value="Rice">Rice</option>
                                 <option value="Wheat">Wheat</option>
                                 <option value="Potato">Potato</option>
@@ -53,7 +53,7 @@
                             <label id="plabel">Price /Kg</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="price" name="price" placeholder="Price set at...">
+                            <input type="text" id="prodprice" name="prodprice" placeholder="Price set at...">
                         </div>
                     </div>
                     <div class="row">
@@ -61,7 +61,7 @@
                             <label id="qauntitylabel">Qauntity</label>
                         </div>
                         <div class="col-75">
-                            <select id="qauntity" name="Qauntity">
+                            <select id="prodqty" name="prodqty">
                         <option value="5">5</option>
                         <option value="10">10</option>
                         <option value="15">15</option>
@@ -85,7 +85,7 @@
                     </div> -->
                     <br>
                     <div class="row">
-                        <input type="submit" value="Submit" onclick="opensuccess()" >
+                        <input type="button" value="Submit" onclick="opensuccess()" >
                     </div>
                 </form>
             </div>

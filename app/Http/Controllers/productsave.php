@@ -1,16 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\product;
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\Console;
 
-class product extends Controller
+class productsave extends Controller
 {
     function prod(Request $req)
     {
-        // $result=["Result"=>"Success"];
-        // return $result;
         $emp=new product();
         $emp->prodname=$req->prodname;
         $emp->prodprice=$req->prodprice;
