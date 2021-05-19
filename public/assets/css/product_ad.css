@@ -13,8 +13,9 @@ textarea {
 }
 
 label {
-    padding: 12px 12px 12px 80px;
+    padding: 12px 12px 12px 50px;
     display: inline-block;
+    float: left;
 }
 
 input[type=button] {
