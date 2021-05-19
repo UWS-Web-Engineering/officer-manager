@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/assets/css/productlist.css">
     <link rel="stylesheet" href="/assets/css/product_ad.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
 </head>
 
 <body>
@@ -75,14 +76,14 @@
                       </select>
                         </div>
                     </div>
-                    <!-- <div class="row">
+                    <div class="row">
                         <div class="col-25">
-                            <label for="note">Notes</label>
+                            <label for="note">Fulfill By</label>
                         </div>
                         <div class="col-75">
-                            <textarea id="note" name="note" placeholder="Write something.." style="height:200px"></textarea>
+                        <input type="date" id="prodfulfill" name="prodfulfill">
                         </div>
-                    </div> -->
+                    </div>
                     <br>
                     <div class="row">
                         <input type="button" value="Submit" onclick="opensuccess()" >

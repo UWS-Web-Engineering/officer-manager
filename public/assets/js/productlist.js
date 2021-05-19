@@ -9,34 +9,34 @@ function closemodal() {
     x.className = "modal";
 }
 
-function opensuccess() {
-
+function opensuccess() 
+{
+    months=['January','February','March','April','April','June','July','August','September','October','November','December'];
+    var today = new Date(document.getElementById('prodfulfill').value);
+    var dd = today.getDate();
+        var mm = today.getMonth();
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+            mm = months[mm];
+        var today = dd + ' ' + mm + ' ' + yyyy;
     let product = {
         prodname: document.getElementById('prodname').value,
         prodprice: document.getElementById('prodprice').value,
-        prodqty: document.getElementById('prodqty').value
+        prodqty: document.getElementById('prodqty').value,
+        prodfulfill:today
     }
+    console.log(product);
     let json = JSON.stringify(product);
 
     const xhr = new XMLHttpRequest(); 
     xhr.open("POST", "api/product");
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(json);
-
-//     var endpoint = 'https://localhost/api/product'; 
-//     data: $('#myForm').serializeArray()
-// $.ajax({ 
-//     type: "POST",
-//     url: endpoint,
-//     data: $('#myForm').serializeArray(),
-//     success: function () {
-//     var z = document.getElementById("successmodal")
-//     z.className = "";
-//     z.className = "modal show-modal";  
-//         alert('success post');
-//     }
-// });
-      
+    var z = document.getElementById("successmodal")
+         z.className = "";
+         z.className = "modal show-modal";        
 }
 function closesuccess()
 {
