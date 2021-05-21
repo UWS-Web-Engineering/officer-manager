@@ -14,7 +14,8 @@ class negotiations extends Controller
         return DB::table('offers')
         ->join('farmers','offers.farmerid','=','farmers.id')
         ->join('products','offers.productid','=','products.id')
-        ->select('products.prodname','farmers.farmername','offers.id','offers.fulfill','products.prodstatus')
+        ->select('products.prodname','farmers.farmername','offers.id','offers.fulfill','products.prodstatus','offers.rejected')
+        ->where('offers.rejected','=',0)
         ->get();
     }
     function negotiate_dets($req)
@@ -22,7 +23,7 @@ class negotiations extends Controller
         return DB::table('offers')
         ->join('farmers','offers.farmerid','=','farmers.id')
         ->join('products','offers.productid','=','products.id')
-        ->select('products.prodname','farmers.farmername','offers.id','offers.fulfill','products.prodstatus','offers.prodqty','offers.prodprice')
+        ->select('products.prodname','farmers.farmername','offers.id','offers.fulfill','products.prodstatus','offers.prodqty','offers.prodprice','offers.farmerid','offers.productid')
         ->where('offers.id','=',$req)
         ->get();
     }

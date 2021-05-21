@@ -26,3 +26,5 @@ Route::get("negotiations",[negotiations::class,'negotiate']);
 Route::get("products",[products::class,'getproduct']);
 Route::get("farmer_response/{farmer_response_dets}",[negotiations::class,'negotiate_dets']); 
 Route::put("counter",[counter::class,'counter_offer']);
+Route::put("accept",[products::class,'accept']);
+Route::put("reject",[products::class,'reject']);

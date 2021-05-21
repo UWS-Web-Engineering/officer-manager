@@ -7,9 +7,9 @@ xmlhttp.onload = function () {
         z = 0
         $("#myTable").find("tr").click(function () {
             let pos = $(this).index() - 1;
-            document.location.href = "/farmer_response/"+ids[pos]
+            document.location.href = "/farmer_response/" + ids[pos]
         });
-       
+
     });
 };
 let ids = []
@@ -18,20 +18,20 @@ function loadAPI(xml) {
     for (var i = 0; i < xml.length; i++) {
         let status;
         ids.push(xml[i].id)
-        if (xml[i].prodstatus == 0) {
+        if (xml[i].prodstatus == null && xml[i].rejected==0) {
             status = "In Progress"
+            table += "<tr><td>" +
+                xml[i].prodname +
+                "</td><td>" +
+                xml[i].farmername +
+                "</td><td>" +
+                xml[i].fulfill +
+                "</td><td>" +
+                status +
+                "</td></tr>";
         }
-        table += "<tr><td>" +
-            xml[i].prodname +
-            "</td><td>" +
-            xml[i].farmername +
-            "</td><td>" +
-            xml[i].fulfill +
-            "</td><td>" +
-            status +
-            "</td></tr>";
     }
     table += "</table>";
-    loadTable.insertAdjacentHTML('beforeend', table); console.log(ids)
+    loadTable.insertAdjacentHTML('beforeend', table);
 }
 xmlhttp.send();
