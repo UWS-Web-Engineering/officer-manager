@@ -1,3 +1,23 @@
+var xmlhttp = new XMLHttpRequest();
+var t = "/api" + document.location.pathname.toString();
+xmlhttp.open("GET", t);
+var offerid
+xmlhttp.onload = function () {
+    loadAPI(JSON.parse(xmlhttp.responseText));
+}
+function loadAPI(xml) {
+    for (var i = 0; i < xml.length; i++) {
+        offerid = xml[i].id
+        document.getElementById('farmername').prepend(document.createTextNode(xml[i].farmername.toString()));
+        document.getElementById('product_name').innerHTML = xml[i].prodname;
+        // document.getElementById('farmer_name').innerHTML=xml[i].farmername;
+        document.getElementById('product_price').innerHTML = xml[i].prodprice;
+        document.getElementById('product_qauntity').innerHTML = xml[i].prodqty;
+        document.getElementById('fulfill').innerHTML = xml[i].fulfill;
+        document.getElementById('product_counter_name').innerHTML = xml[i].prodname;
+    }
+}
+xmlhttp.send();
 function opencounter() {
     var x = document.getElementById("modal")
     x.className = "";
@@ -12,9 +32,46 @@ function closemodal() {
 }
 
 function opensuccess() {
-    var x = document.getElementById("successmodal")
-    x.className = "";
-    x.className = "modal show-modal";
+    months = ['January', 'February', 'March', 'April', 'April', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var today = new Date(document.getElementById('product_counter_fulfill').value);
+    var dd = today.getDate();
+    var mm = today.getMonth();
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    mm = months[mm];
+    var today = dd + ' ' + mm + ' ' + yyyy;
+    let product = {
+        id: offerid,
+        prodprice: document.getElementById('product_counter_price').value,
+        prodqty: document.getElementById('product_counter_quantity').value,
+        prodfulfill: today
+    }
+    console.log(product);
+    let json = JSON.stringify(product);
+    $.ajax({
+        url: document.location.pathname = "api/counter",    //Your api url
+        type: 'PUT',   //type is any HTTP method
+        data: {
+            data: json
+        },      //Data as js object
+        success: function () {
+            var x = document.getElementById("successmodal")
+            x.className = "";
+            x.className = "modal show-modal";
+        }
+    });
+
+
+
+
+
+    // const xhr = new XMLHttpRequest();
+    // xhr.open("POST", document.location.pathname = "api/counter");
+    // xhr.setRequestHeader("Content-Type", "application/json");
+    // xhr.send(json);
+
 }
 
 function closesuccess() {

@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="/assets/css/farmerslist.css">
     <link rel="stylesheet" href="/assets/css/product_ad.css">
     <link rel="stylesheet" href="/assets/css/productlist.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="/assets/js/farmer_response.js"></script>
 </head>
 
@@ -17,7 +18,7 @@
     </div>
 
     <div class="container">
-        <h2>Name of farmer with ID 123 has offered you a deal.</h2>
+        <h2 id="farmername"> has offered you a deal.</h2>
         <h4>Do you accept this offer?</h4>
         <form>
             <div class="row">
@@ -25,15 +26,23 @@
                     <label for="product">Product Name</label>
                 </div>
                 <div class="col-75">
-                    <label for="product_name">Rice (This name should be gotten from the request.)</label>
+                    <label id="product_name" for="product_name"></label>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-25">
-                    <label for="price">Price /Kg</label>
+                    <label for="product">Farmer Name</label>
                 </div>
                 <div class="col-75">
-                    <label for="product_price">20 (This name should be gotten from the request.)</label>
+                    <label id="farmer_name" for="product_name"></label>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-25">
+                    <label for="price">Price / Kg</label>
+                </div>
+                <div class="col-75">
+                    <label id="product_price" for="product_price"></label>
                 </div>
             </div>
             <div class="row">
@@ -41,17 +50,17 @@
                     <label for="qauntity">Qauntity</label>
                 </div>
                 <div class="col-75">
-                    <label for="product_qauntity">50 kgs (This name should be gotten from the request.)</label>
+                    <label id="product_qauntity"></label>
                 </div>
             </div>
-            <!-- <div class="row">
+            <div class="row">
                 <div class="col-25">
-                    <label for="note">Notes</label>
+                    <label for="fulfill">Fulfilled By</label>
                 </div>
                 <div class="col-75">
-                    <textarea id="note" name="note" placeholder="Write something.." style="height:200px"></textarea>
+                <label id="fulfill"for="fulfill"></label>
                 </div>
-            </div> -->
+            </div>
             <br>
             <div class="row">
                 <input type="button" value="Action" onclick="openaction()">
@@ -70,8 +79,7 @@
                             <label for="fname">Product Name</label>
                         </div>
                         <div class="col-75">
-                            <label style="padding-left: 0" for="product_name">Rice (This name should be gotten from the
-                                request.)</label>
+                            <label id="product_counter_name" style="padding-left: 0" for="product_name"></label>
                         </div>
                     </div>
                     <div class="row">
@@ -79,7 +87,7 @@
                             <label for="lname">Price /Kg</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="lname" name="price" placeholder="Price set at...">
+                            <input type="text" id="product_counter_price" name="price" placeholder="Price set at...">
                         </div>
                     </div>
                     <div class="row">
@@ -87,7 +95,7 @@
                             <label for="qauntity">Qauntity</label>
                         </div>
                         <div class="col-75">
-                            <select id="qauntity" name="Qauntity">
+                            <select id="product_counter_quantity" name="Qauntity">
                                 <option value="5">5</option>
                                 <option value="10">10</option>
                                 <option value="15">15</option>
@@ -101,14 +109,14 @@
                             </select>
                         </div>
                     </div>
-                    <!-- <div class="row">
+                    <div class="row">
                         <div class="col-25">
-                            <label for="note">Notes</label>
+                            <label for="note">Fulfill By</label>
                         </div>
                         <div class="col-75">
-                            <textarea id="note" name="note" placeholder="Write something.." style="height:200px"></textarea>
+                        <input type="date" id="product_counter_fulfill" name="prodfulfill">
                         </div>
-                    </div> -->
+                    </div>
                     <br>
                     <div class="row">
                         <input type="button" value="Counter" onclick="opensuccess()">

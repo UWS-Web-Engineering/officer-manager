@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/assets/css/farmerslist.css">
     <link rel="stylesheet" href="/assets/css/negotiation.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    
 
     
 </head>
@@ -24,8 +25,6 @@
         <table id="myTable">
         </table>
     </div>
-
 </body>
 <script src="/assets/js/negotiation.js"></script>
-<script src="/assets/js/negotiations1.js"></script>
 </html>

@@ -1,25 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\product;
+use App\Models\offer;
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\Console;
 
-class productsave extends Controller
+class counter extends Controller
 {
-    function prod(Request $req)
+    function counter_offer(Request $req)
     {
-        $emp=new product();
-        $emp->prodname=$req->prodname;
+        $emp=offer::find($req->offerid);
         $emp->prodprice=$req->prodprice;
         $emp->prodqty=$req->prodqty;
         $emp->fulfill=$req->prodfulfill;
-        $emp->negotiations=0;
         $resp=$emp->save();
-        $result=["Result"=>"No Success"];
+        $result=["Result"=>"No Success Update"];
         if($resp)
         {
-            $result=["Result"=>"Success"];
+            $result=["Result"=>"Success Update"];
         }
         return $result;
     }
