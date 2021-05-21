@@ -14,7 +14,7 @@ class productsave extends Controller
         $emp->prodprice=$req->prodprice;
         $emp->prodqty=$req->prodqty;
         $emp->fulfill=$req->prodfulfill;
-        $emp->negotiations=0;
+        $emp->prodstatus=0;
         $resp=$emp->save();
         $result=["Result"=>"No Success"];
         if($resp)

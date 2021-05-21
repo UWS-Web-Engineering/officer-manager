@@ -38,6 +38,7 @@ function opensuccess()
          z.className = "";
          z.className = "modal show-modal";        
 }
+
 function closesuccess()
 {
     var x = document.getElementById("successmodal");
@@ -46,31 +47,25 @@ function closesuccess()
     x1.className = "modal";
     document.location.href = "/product";
 }
-var loadTable = document.getElementById('myTable');
 
+var loadTable = document.getElementById('myTable');
 var xmlhttp = new XMLHttpRequest();
-xmlhttp.open("GET", "https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1001");
+xmlhttp.open("GET", "/api/products");
 xmlhttp.onload = function() {
     loadAPI(JSON.parse(xmlhttp.responseText));
 };
 
 function loadAPI(xml) {
-    var table = "<table><tr><th>Product</th><th>Farmer</th><th>Price</th><th>Quantity / KG</th><th>Farm Size</th><th>Start Date</th><th>End Date</th></tr>";
+    var table = "<table><tr><th>Product</th><th>Product Price</th><th>Product Quantity</th><th>End Date</th></tr>";
     for (var i = 0; i < xml.length; i++) {
         table += "<tr><td>" +
-            xml[i].firstName +
+            xml[i].prodname +
             "</td><td>" +
-            xml[i].lastName +
+            xml[i].prodprice +
             "</td><td>" +
-            xml[i].contactNumber +
+            xml[i].prodqty +
             "</td><td>" +
-            xml[i].age +
-            "</td><td>" +
-            xml[i].dob +
-            "</td><td>" +
-            xml[i].salary +
-            "</td><td>" +
-            xml[i].address +
+            xml[i].fulfill +
             "</td></tr>";
     }
     table += "</table>";

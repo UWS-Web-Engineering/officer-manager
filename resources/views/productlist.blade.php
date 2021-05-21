@@ -26,8 +26,7 @@
     <br>
     <br>
     <div style="overflow-x:auto;">
-        <table id="myTable">
-        </table>
+        <table id="myTable"> </table>
     </div>
     <div id="modal" class="modal">
         <div class="modal-content">
