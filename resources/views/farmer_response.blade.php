@@ -58,7 +58,7 @@
                     <label for="fulfill">Fulfilled By</label>
                 </div>
                 <div class="col-75">
-                <label id="fulfill"for="fulfill"></label>
+                    <label id="fulfill" for="fulfill"></label>
                 </div>
             </div>
             <br>
@@ -114,7 +114,7 @@
                             <label for="note">Fulfill By</label>
                         </div>
                         <div class="col-75">
-                        <input type="date" id="product_counter_fulfill" name="prodfulfill">
+                            <input type="date" id="product_counter_fulfill" name="prodfulfill">
                         </div>
                     </div>
                     <br>
@@ -134,12 +134,27 @@
     </div>
     <div id="action" class="modal">
         <div style="width: 30%;height: 150px;" class="modal-content">
-            <span onclick="closesuccess()" class="close-button">x</span>
+            <span onclick="closemodal()" class="close-button">x</span>
             <h4 style="text-align: center;">What do you want to do with this offer?</h4>
-            <input style="margin-right: 75px" type="button" value="Reject">
+            <input style="margin-right: 75px" type="button" value="Reject" onclick="rejectoffer()">
             <input style="margin-right: 10px" type="button" value="Counter" onclick="opencounter()">
-            <input style="margin-right: 10px" type="button" value="Accept">
-
+            <input style="margin-right: 10px" type="button" value="Accept" onclick="acceptoffer()">
+        </div>
+        <div id="acceptsuccess" class="modal">
+            <div style="width: 30%;height: 175px;" class="modal-content">
+                <span onclick="closesuccess()" class="close-button">x</span>
+                <h2 style="text-align: center;">Congratulations!</h2>
+                <h4 style="text-align: center;">You have Accepted the offer!</h4>
+                <input style="position:absolute; left:42%" type="button" value="Close" onclick="closesuccess()">
+            </div>
+        </div>
+        <div id="rejectsuccess" class="modal">
+            <div style="width: 30%;height: 175px;" class="modal-content">
+                <span onclick="closesuccess()" class="close-button">x</span>
+                <h2 style="text-align: center;">Awwww :(</h2>
+                <h4 style="text-align: center;">You have Reject the offer!</h4>
+                <input style="position:absolute; left:42%" type="button" value="Close" onclick="closesuccess()">
+            </div>
         </div>
     </div>
 </body>

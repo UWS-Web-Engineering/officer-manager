@@ -4,6 +4,7 @@ xmlhttp.open("GET", t);
 var offerid;
 xmlhttp.onload = function () {
     loadAPI(JSON.parse(xmlhttp.responseText));
+    console.log(JSON.parse(xmlhttp.responseText));
     xmlhttp.abort();
 }
 function loadAPI(xml) {
@@ -21,7 +22,7 @@ function loadAPI(xml) {
 xmlhttp.send();
 
 
-function opencounter() { 
+function opencounter() {
     var x = document.getElementById("modal")
     x.className = "";
     x.className = "modal show-modal";
@@ -31,6 +32,8 @@ function opencounter() {
 
 function closemodal() {
     var x = document.getElementById("modal");
+    var y = document.getElementById("action")
+    y.className = "modal";
     x.className = "modal";
 }
 
@@ -85,4 +88,64 @@ function openaction() {
     var x = document.getElementById("action")
     x.className = "";
     x.className = "modal show-modal";
+}
+function acceptoffer() {
+    let product
+    xmlhttp.open("GET", t);
+    xmlhttp.onload = function () {
+        offerdets = JSON.parse(xmlhttp.responseText);
+        for (var i = 0; i < offerdets.length; i++) {
+            product = {
+                id: offerdets[i].productid,
+                prodname: offerdets[i].prodname,
+                prodprice: offerdets[i].prodprice,
+                prodqty: offerdets[i].prodqty,
+                prodfulfill: offerdets[i].fulfill,
+                farmerid: offerdets[i].farmerid
+            }
+        }
+        console.log(product);
+        // console.log(document.location.pathname = "api/counter")
+        $.ajax({
+            type: "PUT",   //type is any HTTP method
+            contentType: "application/json; charset=utf-8",
+            url: "/api/accept",    //Your api url
+            data: JSON.stringify(product),   //Data as js object
+            dataType: "json",
+            success: function () {
+                var y = document.getElementById("acceptsuccess")
+                y.className = "modal show-modal";
+            }
+        });
+        xmlhttp.abort();
+    }
+    xmlhttp.send();
+}
+function rejectoffer()
+{
+    let product
+    xmlhttp.open("GET", t);
+    xmlhttp.onload = function () {
+        offerdets = JSON.parse(xmlhttp.responseText);
+        for (var i = 0; i < offerdets.length; i++) {
+            product = {
+                id: offerdets[i].id
+            }
+        }
+        console.log(product);
+        // console.log(document.location.pathname = "api/counter")
+        $.ajax({
+            type: "PUT",   //type is any HTTP method
+            contentType: "application/json; charset=utf-8",
+            url: "/api/reject",    //Your api url
+            data: JSON.stringify(product),   //Data as js object
+            dataType: "json",
+            success: function () {
+                var y = document.getElementById("rejectsuccess")
+                y.className = "modal show-modal";
+            }
+        });
+        xmlhttp.abort();
+    }
+    xmlhttp.send();
 }
