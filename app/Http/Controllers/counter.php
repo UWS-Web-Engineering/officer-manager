@@ -9,7 +9,7 @@ class counter extends Controller
 {
     function counter_offer(Request $req)
     {
-        $emp=offer::find($req->offerid);
+        $emp=offer::find($req->id);
         $emp->prodprice=$req->prodprice;
         $emp->prodqty=$req->prodqty;
         $emp->fulfill=$req->prodfulfill;
