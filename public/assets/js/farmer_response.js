@@ -1,9 +1,10 @@
 var xmlhttp = new XMLHttpRequest();
 var t = "/api" + document.location.pathname.toString();
 xmlhttp.open("GET", t);
-var offerid
+var offerid;
 xmlhttp.onload = function () {
     loadAPI(JSON.parse(xmlhttp.responseText));
+    xmlhttp.abort();
 }
 function loadAPI(xml) {
     for (var i = 0; i < xml.length; i++) {
@@ -18,7 +19,9 @@ function loadAPI(xml) {
     }
 }
 xmlhttp.send();
-function opencounter() {
+
+
+function opencounter() { 
     var x = document.getElementById("modal")
     x.className = "";
     x.className = "modal show-modal";
@@ -44,29 +47,25 @@ function opensuccess() {
     var today = dd + ' ' + mm + ' ' + yyyy;
     let product = {
         id: offerid,
-        prodprice: document.getElementById('product_counter_price').value,
-        prodqty: document.getElementById('product_counter_quantity').value,
+        prodprice: parseInt(document.getElementById('product_counter_price').value),
+        prodqty: parseInt(document.getElementById('product_counter_quantity').value),
         prodfulfill: today
     }
     console.log(product);
     let json = JSON.stringify(product);
+    // console.log(document.location.pathname = "api/counter")
     $.ajax({
-        url: document.location.pathname = "api/counter",    //Your api url
-        type: 'PUT',   //type is any HTTP method
-        data: {
-            data: json
-        },      //Data as js object
+        type: "PUT",   //type is any HTTP method
+        contentType: "application/json; charset=utf-8",
+        url: "/api/counter",    //Your api url
+        data: JSON.stringify(product),   //Data as js object
+        dataType: "json",
         success: function () {
             var x = document.getElementById("successmodal")
             x.className = "";
             x.className = "modal show-modal";
         }
     });
-
-
-
-
-
     // const xhr = new XMLHttpRequest();
     // xhr.open("POST", document.location.pathname = "api/counter");
     // xhr.setRequestHeader("Content-Type", "application/json");
