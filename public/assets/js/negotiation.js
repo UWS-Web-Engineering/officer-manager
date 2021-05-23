@@ -4,7 +4,6 @@ xmlhttp.open("GET", "/api/negotiations");
 xmlhttp.onload = function () {
     loadAPI(JSON.parse(xmlhttp.responseText));
     $(document).ready(function ($) {
-        z = 0
         $("#myTable").find("tr").click(function () {
             let pos = $(this).index() - 1;
             document.location.href = "/farmer_response/" + ids[pos]

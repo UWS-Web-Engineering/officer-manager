@@ -22,21 +22,29 @@ function myFunction() {
 
 
 var loadTable = document.getElementById('myTable');
-
+let ids = []
 var xmlhttp = new XMLHttpRequest();
-xmlhttp.open("GET", "https://run.mocky.io/v3/05f981f3-9701-40ef-999e-a540407b1c1e");
-xmlhttp.onload = function() {
-    console.log(xmlhttp.responseText);
+xmlhttp.open("GET", "/api/farmerslist");
+xmlhttp.onload = function () {
     loadAPI(JSON.parse(xmlhttp.responseText));
+    $(document).ready(function ($) {
+        $("#myTable").find("tr").click(function () {
+            let pos = $(this).index() - 1;
+            document.location.href = "/farmerdetails/" + ids[pos]
+        });
+
+    });
+    xmlhttp.abort();
 };
 
 function loadAPI(xml) {
     var j = 0;
     console.log(xml)
-    var table = "<table><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Contact Number</th><th>Farm Size</th><th>Date of Birth</th><th>Number of Crops</th><th>Address</th></tr>";
+    var table = "<table><tr><th>Farmer Name</th><th>Last Name</th><th>Email</th><th>Contact Number</th><th>Farm Size</th><th>Date of Birth</th><th>Number of Crops</th><th>Address</th></tr>";
     for (var i = 0; i < xml.length; i++) {
+        ids.push(xml[i].id)
         table += "<tr><td>" +
-            xml[i].firstName +
+            xml[i].farmername +
             "</td><td>" +
             xml[i].lastName +
             "</td><td>" +
@@ -54,7 +62,7 @@ function loadAPI(xml) {
             "</td></tr>";
     }
     table += "</table>";
-    console.log(table);
     loadTable.insertAdjacentHTML('beforeend', table);
 }
 xmlhttp.send();
+

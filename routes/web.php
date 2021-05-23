@@ -28,7 +28,7 @@ Route::get('/operators', function () {
 Route::get('/farmer_response/{farmer_response_dets}',function(){
     return view('farmer_response');
 });
-Route::get('/farmerdetails',function(){
+Route::get('/farmerdetails/{deal_dets}',function(){
     return view('farmerdetails');
 });
 Route::get('/farmerslist',function(){

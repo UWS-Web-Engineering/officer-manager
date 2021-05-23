@@ -26,6 +26,7 @@
     <br>
     <br>
     <div style="overflow-x:auto;">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Products..">
         <table id="myTable"> </table>
     </div>
     <div id="modal" class="modal">
