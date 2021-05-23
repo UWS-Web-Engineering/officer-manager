@@ -15,9 +15,11 @@ function loadAPI(xml) {
         if(xml[i].negotiation==0)
         {
             document.getElementById('qna').innerHTML = QnA[0];
+            document.getElementById('action_button').style.display = "none";
         }
         else{
             document.getElementById('qna').innerHTML = QnA[1];
+            document.getElementById('action_button').style.display = "block";
         }
         document.getElementById('product_name').innerHTML = xml[i].prodname;
         // document.getElementById('farmer_name').innerHTML=xml[i].farmername;
