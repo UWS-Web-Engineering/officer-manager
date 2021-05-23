@@ -8,7 +8,6 @@ xmlhttp.onload = function () {
             let pos = $(this).index() - 1;
             document.location.href = "/farmer_response/" + ids[pos]
         });
-
     });
 };
 let ids = []
