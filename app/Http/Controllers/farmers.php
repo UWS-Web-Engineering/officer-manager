@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\farmer;
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\Console;
 Use Illuminate\Support\Facades\DB;
@@ -22,5 +24,9 @@ class farmers extends Controller
         ->select('products.*','farmers.*')
         ->where('products.id','=',$req)
         ->get();
+    }
+    function all_farmers_for_chat()
+    {
+        return farmer::all();
     }
 }

@@ -31,3 +31,4 @@ Route::put("accept",[products::class,'accept']);
 Route::put("reject",[products::class,'reject']);
 Route::get("farmerslist",[farmers::class,'farmerslist']); 
 Route::get("farmerdetails/{deal_dets}",[farmers::class,'deal_dets']);
+Route::get("chat",[farmers::class,'all_farmers_for_chat']);
