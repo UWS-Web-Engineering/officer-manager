@@ -59,9 +59,17 @@ $(window).on('keydown', function (e) {
 });
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.open("GET", "/api/chat");
-var farmerid;
+var farmerid,pos;
 xmlhttp.onload = function () {
     loadAPI(JSON.parse(xmlhttp.responseText));
+    $(document).ready(function ($) {
+    $(".contact").click(function () {
+        pos = $(this).index();
+        $("#contacts ul li").removeClass();
+        $("#contacts ul li").addClass("contact");
+        $('#contacts ul li:eq('+pos+')').addClass('contact active');
+    });
+});
     xmlhttp.abort();
 }
 function loadAPI(xml) {
