@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" href="/assets/css/farmerdetails.css">
     <link rel="stylesheet" href="/assets/css/farmerslist.css">
-    <script type="text/javascript" src="/assets/js/farmerdetails.js"></script>
+
     <link rel="stylesheet" href="/assets/css/chatbox.css">
 </head>
 
@@ -9,33 +9,37 @@
     <a href="#default" class="logo">CompanyLogo</a>
     <div class="header-right">
         <a href="/product">Product</a>
-        <a class="active" href="/farmerslist.html">Farmers</a>
+        <a class="active" href="/farmerslist">Farmers</a>
         <a href="/queries">Queries</a>
         <a href="/negotiation">Negotiations</a>
     </div>
 </div>
 <div class="container">
+    <h2 id="farmername"> has offered you a deal.</h2>
+    <h4>Do you accept this offer?</h4>
     <form>
         <div class="row">
             <div class="col-25">
-                <label for="fname">Product Name</label>
+                <label for="product">Product Name</label>
             </div>
             <div class="col-75">
-                <select id="product" name="product">
-                    <option value="Rice">Rice</option>
-                    <option value="Wheat">Wheat</option>
-                    <option value="Potato">Potato</option>
-                    <option value="Tomatos">Tomatos</option>
-                    <option value="Peas">Peas</option>
-                  </select>
+                <label id="product_name" for="product_name"></label>
             </div>
         </div>
+        <!-- <div class="row">
+                <div class="col-25">
+                    <label for="product">Farmer Name</label>
+                </div>
+                <div class="col-75">
+                    <label id="farmer_name" for="product_name"></label>
+                </div>
+            </div> -->
         <div class="row">
             <div class="col-25">
-                <label for="lname">Price /Kg</label>
+                <label for="price">Price / Kg</label>
             </div>
             <div class="col-75">
-                <input type="text" id="lname" name="price" placeholder="Price set at...">
+                <label id="product_price" for="product_price"></label>
             </div>
         </div>
         <div class="row">
@@ -43,26 +47,25 @@
                 <label for="qauntity">Qauntity</label>
             </div>
             <div class="col-75">
-                <select id="qauntity" name="Qauntity">
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
-            <option value="25">25</option>
-            <option value="30">30</option>
-            <option value="35">35</option>
-            <option value="40">40</option>
-            <option value="45">45</option>
-            <option value="50">50</option>
-          </select>
+                <label id="product_qauntity"></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="fulfill">Fulfilled By</label>
+            </div>
+            <div class="col-75">
+                <label id="fulfill" for="fulfill"></label>
             </div>
         </div>
         <br>
-        <div>
+        <div class="row">
             <button type="button" class="chat-button" onclick="openForm()">Chat</button>
+            <input style="margin-right: 10px" class="chat-button" type="button" value="Close" onclick=closesuccess()>
         </div>
     </form>
 </div>
+
 
 <div class="chat-popup" id="myForm">
     <form class="form-container">
@@ -70,8 +73,15 @@
 
         <label for="msg"><b>Message</b></label>
         <textarea placeholder="Type message.." name="msg" required></textarea>
-
+        <select id="question" name="question">
+            <option>Rice</option>
+            <option>Wheat</option>
+            <option>Potato</option>
+            <option>Tomatos</option>
+            <option>Peas</option>
+        </select>
         <button type="button" class="btn" onclick="chat()">Send</button>
         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
     </form>
 </div>
+<script type="text/javascript" src="/assets/js/farmerdetails.js"></script>

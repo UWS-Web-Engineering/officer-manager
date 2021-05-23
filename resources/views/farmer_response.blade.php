@@ -64,7 +64,7 @@
             <br>
             <div class="row">
                 <input type="button" value="Action" onclick="openaction()">
-                <input style="margin-right: 10px" type="button" value="Close">
+                <input style="margin-right: 10px" type="button" value="Close" onclick=closesuccess()>
             </div>
         </form>
     </div>

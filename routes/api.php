@@ -3,6 +3,7 @@
 use App\Http\Controllers\negotiations;
 use App\Http\Controllers\productsave;
 use App\Http\Controllers\counter;
+use App\Http\Controllers\farmers;
 use App\Http\Controllers\products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +29,5 @@ Route::get("farmer_response/{farmer_response_dets}",[negotiations::class,'negoti
 Route::put("counter",[counter::class,'counter_offer']);
 Route::put("accept",[products::class,'accept']);
 Route::put("reject",[products::class,'reject']);
+Route::get("farmerslist",[farmers::class,'farmerslist']); 
+Route::get("farmerdetails/{deal_dets}",[farmers::class,'deal_dets']);
