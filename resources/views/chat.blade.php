@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html class=''>
 <div class="header">
-    <a href="#default" class="logo">CompanyLogo</a>
+    <a href="/home" class="logo">Manager Mode</a>
     <div class="header-right">
         <a href="/product">Product</a>
         <a href="/farmerslist">Farmers</a>
@@ -52,7 +52,7 @@
             </div>
             <div id="contacts">
                 <ul>
-                    
+
                 </ul>
             </div>
         </div>
