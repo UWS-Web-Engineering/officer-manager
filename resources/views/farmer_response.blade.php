@@ -19,7 +19,7 @@
 
     <div class="container">
         <h2 id="farmername"> has offered you a deal.</h2>
-        <h4>Do you accept this offer?</h4>
+        <h4 id="qna"></h4>
         <form>
             <div class="row">
                 <div class="col-25">
@@ -63,7 +63,7 @@
             </div>
             <br>
             <div class="row">
-                <input type="button" value="Action" onclick="openaction()">
+                <input id="action_button"type="button" value="Action" onclick="openaction()">
                 <input style="margin-right: 10px" type="button" value="Close" onclick=closesuccess()>
             </div>
         </form>

@@ -8,9 +8,17 @@ xmlhttp.onload = function () {
     xmlhttp.abort();
 }
 function loadAPI(xml) {
+    var QnA=['You have already countered this offer. Please wait for farmer to respond. ','Do you accept this offer?']
     for (var i = 0; i < xml.length; i++) {
         offerid = xml[i].id
         document.getElementById('farmername').prepend(document.createTextNode(xml[i].farmername.toString()));
+        if(xml[i].negotiation==0)
+        {
+            document.getElementById('qna').innerHTML = QnA[0];
+        }
+        else{
+            document.getElementById('qna').innerHTML = QnA[1];
+        }
         document.getElementById('product_name').innerHTML = xml[i].prodname;
         // document.getElementById('farmer_name').innerHTML=xml[i].farmername;
         document.getElementById('product_price').innerHTML = xml[i].prodprice;

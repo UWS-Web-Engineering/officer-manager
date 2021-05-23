@@ -12,7 +12,7 @@
     <div class="header">
         <a href="/home" class="logo">Manager Mode</a>
         <div class="header-right">
-            <a class="active" href="/product">Product</a>
+            <a href="/product">Product</a>
             <a href="/farmerslist">Farmers</a>
             <a href="/queries">Queries</a>
             <a href="/negotiation">Negotiations</a>

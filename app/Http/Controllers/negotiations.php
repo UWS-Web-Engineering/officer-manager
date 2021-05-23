@@ -23,7 +23,7 @@ class negotiations extends Controller
         return DB::table('offers')
         ->join('farmers','offers.farmerid','=','farmers.id')
         ->join('products','offers.productid','=','products.id')
-        ->select('products.prodname','farmers.farmername','offers.id','offers.fulfill','products.prodstatus','offers.prodqty','offers.prodprice','offers.farmerid','offers.productid')
+        ->select('products.prodname','farmers.farmername','offers.id','offers.fulfill','products.prodstatus','offers.prodqty','offers.prodprice','offers.farmerid','offers.productid','offers.negotiation')
         ->where('offers.id','=',$req)
         ->get();
     }
