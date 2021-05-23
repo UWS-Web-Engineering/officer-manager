@@ -6,7 +6,7 @@
 </head>
 
 <div class="header">
-    <a href="#default" class="logo">CompanyLogo</a>
+    <a href="/home" class="logo">Manager Mode</a>
     <div class="header-right">
         <a href="/product">Product</a>
         <a class="active" href="/farmerslist">Farmers</a>
