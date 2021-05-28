@@ -15,8 +15,7 @@
     </div>
 </div>
 <div class="container">
-    <h2 id="farmername"> has offered you a deal.</h2>
-    <h4>Do you accept this offer?</h4>
+    <h2 id="farmername"> has made a deal with you for....</h2>
     <form>
         <div class="row">
             <div class="col-25">
@@ -36,7 +35,7 @@
             </div> -->
         <div class="row">
             <div class="col-25">
-                <label for="price">Price / Kg</label>
+                <label for="price">Price ($) / Kg</label>
             </div>
             <div class="col-75">
                 <label id="product_price" for="product_price"></label>

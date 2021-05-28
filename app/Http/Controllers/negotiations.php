@@ -13,8 +13,8 @@ class negotiations extends Controller
     {
         return DB::table('offers')
         ->join('farmers','offers.farmerid','=','farmers.id')
-        ->join('products','offers.productid','=','products.id')
-        ->select('products.prodname','farmers.farmername','offers.id','offers.fulfill','products.prodstatus','offers.rejected')
+        ->join('crops','offers.cropid','=','crops.id')
+        ->select('crops.cropname','farmers.farmername','offers.id','offers.fulfill','crops.cropstatus','offers.rejected','crops.cropstatus')
         ->where('offers.rejected','=',0)
         ->get();
     }
@@ -22,8 +22,8 @@ class negotiations extends Controller
     {
         return DB::table('offers')
         ->join('farmers','offers.farmerid','=','farmers.id')
-        ->join('products','offers.productid','=','products.id')
-        ->select('products.prodname','farmers.farmername','offers.id','offers.fulfill','products.prodstatus','offers.prodqty','offers.prodprice','offers.farmerid','offers.productid','offers.negotiation')
+        ->join('crops','offers.productid','=','crops.id')
+        ->select('crops.cropname','farmers.farmername','offers.id','offers.fulfill','crops.cropstatus','offers.prodqty','offers.prodprice','offers.farmerid','offers.productid','offers.negotiation')
         ->where('offers.id','=',$req)
         ->get();
     }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\product;
+use App\Models\crop;
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\Console;
 
@@ -9,12 +9,13 @@ class productsave extends Controller
 {
     function prod(Request $req)
     {
-        $emp=new product();
-        $emp->prodname=$req->prodname;
-        $emp->prodprice=$req->prodprice;
-        $emp->prodqty=$req->prodqty;
-        $emp->fulfill=$req->prodfulfill;
-        $emp->prodstatus=null;
+        $emp=new crop();
+        $emp->cropname=$req->prodname;
+        $emp->cropimg=$req->prodimg;
+        $emp->cropprice=$req->prodprice;
+        $emp->cropqty=$req->prodqty;
+        $emp->expecteddate=$req->prodfulfill;
+        $emp->cropstatus=null;
         $resp=$emp->save();
         $result=["Result"=>"No Success"];
         if($resp)

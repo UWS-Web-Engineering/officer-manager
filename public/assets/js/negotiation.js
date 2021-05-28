@@ -12,14 +12,16 @@ xmlhttp.onload = function () {
 };
 let ids = []
 function loadAPI(xml) {
-    var table = "<table><tr><th>Product</th><th>Farmer</th><th>Fulfill By</th><th>Status</th></tr>";
+    var table = "<table><tr><th>Crop</th><th>Farmer</th><th>Fulfill By</th><th>Status</th></tr>";
     for (var i = 0; i < xml.length; i++) {
         let status;
-        ids.push(xml[i].id)
-        if (xml[i].prodstatus == null && xml[i].rejected==0) {
+        
+        console.log(xml[i])
+        if (xml[i].cropstatus == null && xml[i].rejected==0 && xml[i].cropstatus!=1) {
+            ids.push(xml[i].id)
             status = "In Progress"
             table += "<tr><td>" +
-                xml[i].prodname +
+                xml[i].cropname +
                 "</td><td>" +
                 xml[i].farmername +
                 "</td><td>" +

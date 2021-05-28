@@ -13,6 +13,7 @@ class counter extends Controller
         $emp->prodprice=$req->prodprice;
         $emp->prodqty=$req->prodqty;
         $emp->fulfill=$req->prodfulfill;
+        $emp->negotiation=0;
         $resp=$emp->save();
         $result=["Result"=>"No Success Update"];
         if($resp)
