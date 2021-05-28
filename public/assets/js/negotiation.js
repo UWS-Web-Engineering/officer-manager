@@ -25,7 +25,7 @@ function loadAPI(xml) {
                 "</td><td>" +
                 xml[i].farmername +
                 "</td><td>" +
-                xml[i].fulfill +
+                xml[i].expecteddate +
                 "</td><td>" +
                 status +
                 "</td></tr>";

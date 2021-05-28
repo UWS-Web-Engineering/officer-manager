@@ -12,10 +12,10 @@ class queries extends Controller
 {
     function get_farmer_chat($req)
     {
-        return DB::table('message')
-            ->join('Officer', 'message.officerid', '=', 'Officer.id')
-            ->join('Farmer', 'message.farmerid', '=', 'Farmer.id')
-            ->select('message.*', 'Farmer.farmername', 'Officer.officername')
+        return DB::table('messages')
+            ->join('Officer', 'messages.officerid', '=', 'Officer.id')
+            ->join('Farmer', 'messages.farmerid', '=', 'Farmer.id')
+            ->select('messages.*', 'Farmer.farmername', 'Officer.officername')
             ->where('farmerid', '=', $req)
             ->get();
     }
@@ -23,9 +23,23 @@ class queries extends Controller
     {
         $emp=new message();
         $emp->farmerid=$req->farmerid;
-        $emp->officermessage=$req->officermessage;
+        $emp->officermessage=$req->mymessage;
         $emp->officerid=1;
         $emp->isread= false;
+        
+        $resp=$emp->save();
+        $result=["Result"=>"No Success Update"];
+        if($resp)
+        {
+            $result=["Result"=>"Success Update"];
+        }
+        return $result;
+    }
+    function addFarmerMessage(Request $req)
+    {
+        $emp=message::find($req->id);
+        $emp->farmermessage=$req->farmermessage;
+        $emp->isread= true;
         $resp=$emp->save();
         $result=["Result"=>"No Success Update"];
         if($resp)

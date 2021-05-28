@@ -12,12 +12,12 @@ function loadAPI(xml) {
         console.log(xml)
         offerid = xml[i].id
         document.getElementById('farmername').prepend(document.createTextNode(xml[i].farmername.toString()));
-        document.getElementById('product_name').innerHTML = xml[i].prodname;
+        document.getElementById('product_name').innerHTML = xml[i].cropname;
         // document.getElementById('farmer_name').innerHTML=xml[i].farmername;
-        document.getElementById('product_price').innerHTML = xml[i].prodprice;
-        document.getElementById('product_qauntity').innerHTML = xml[i].prodqty;
-        document.getElementById('fulfill').innerHTML = xml[i].fulfill;
-        document.getElementById('product_counter_name').innerHTML = xml[i].prodname;
+        document.getElementById('product_price').innerHTML = xml[i].cropprice;
+        document.getElementById('product_qauntity').innerHTML = xml[i].cropqty;
+        document.getElementById('fulfill').innerHTML = xml[i].expecteddate;
+        document.getElementById('product_counter_name').innerHTML = xml[i].cropname;
     }
 }
 xmlhttp.send();

@@ -23,9 +23,9 @@ function loadAPI(xml) {
         }
         document.getElementById('product_name').innerHTML = xml[i].cropname;
         // document.getElementById('farmer_name').innerHTML=xml[i].farmername;
-        document.getElementById('product_price').innerHTML = xml[i].prodprice;
-        document.getElementById('product_qauntity').innerHTML = xml[i].prodqty;
-        document.getElementById('fulfill').innerHTML = xml[i].fulfill;
+        document.getElementById('product_price').innerHTML = xml[i].cropprice;
+        document.getElementById('product_qauntity').innerHTML = xml[i].cropqty;
+        document.getElementById('fulfill').innerHTML = xml[i].expecteddate;
         document.getElementById('product_counter_name').innerHTML = xml[i].cropname;
     }
 }
@@ -108,8 +108,8 @@ function acceptoffer() {
             product = {
                 id: offerdets[i].cropid,
                 prodname: offerdets[i].cropname,
-                prodprice: offerdets[i].prodprice,
-                prodqty: offerdets[i].prodqty,
+                prodprice: offerdets[i].cropprice,
+                prodqty: offerdets[i].cropqty,
                 prodfulfill: offerdets[i].expecteddate,
                 farmerid: offerdets[i].farmerid
             }
