@@ -39,7 +39,7 @@
             </div> -->
             <div class="row">
                 <div class="col-25">
-                    <label for="price">Price / Kg</label>
+                    <label for="price">Price ($) / Kg</label>
                 </div>
                 <div class="col-75">
                     <label id="product_price" for="product_price"></label>
@@ -47,7 +47,7 @@
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="qauntity">Qauntity</label>
+                    <label for="qauntity">Quantity</label>
                 </div>
                 <div class="col-75">
                     <label id="product_qauntity"></label>
@@ -71,7 +71,7 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <span onclick="closemodal()" class="close-button">x</span>
-            <h2>Conter the offer</h2>
+            <h2>Counter the offer</h2>
             <div class="container">
                 <form>
                     <div class="row">
@@ -84,7 +84,7 @@
                     </div>
                     <div class="row">
                         <div class="col-25">
-                            <label for="lname">Price /Kg</label>
+                            <label for="lname">Price ($) /Kg</label>
                         </div>
                         <div class="col-75">
                             <input type="text" id="product_counter_price" name="price" placeholder="Price set at...">
@@ -92,7 +92,7 @@
                     </div>
                     <div class="row">
                         <div class="col-25">
-                            <label for="qauntity">Qauntity</label>
+                            <label for="qauntity">Quantity</label>
                         </div>
                         <div class="col-75">
                             <select id="product_counter_quantity" name="Qauntity">

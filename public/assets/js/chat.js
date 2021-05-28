@@ -1,3 +1,4 @@
+var querieid
 $(".messages").animate({
     scrollTop: $(document).height()
 }, "fast");
@@ -45,6 +46,42 @@ function newMessage() {
     $(".messages").animate({
         scrollTop: $(document).height()
     }, "fast");
+    let messagejson
+    if (querieid != null) {
+        messagejson = {
+            id: querieid,
+            mymessage: message
+        }
+        $.ajax({
+        type: "PUT",   //type is any HTTP method
+        contentType: "application/json; charset=utf-8",
+        url: "/api/sendmessage",    //Your api url
+        data: JSON.stringify(messagejson),   //Data as js object
+        dataType: "json",
+        success: function () {
+        }
+    });
+    }
+    else{
+        messagejson = {
+            farmerid:farmerid[pos],
+            mymessage: message
+        }
+        console.log(messagejson)
+        $.ajax({
+            type: "POST",   //type is any HTTP method
+            contentType: "application/json; charset=utf-8",
+            url: "/api/startmessage",    //Your api url
+            data: JSON.stringify(messagejson),   //Data as js object
+            dataType: "json",
+            success: function () {
+            }
+        });
+    }
+    console.log(querieid)
+    console.log(messagejson);
+    // console.log(document.location.pathname = "api/counter")
+    
 };
 
 $('.submit').click(function () {
@@ -57,26 +94,73 @@ $(window).on('keydown', function (e) {
         return false;
     }
 });
+
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.open("GET", "/api/chat");
-var farmerid,pos;
+var farmerid = [], pos;
 xmlhttp.onload = function () {
     loadAPI(JSON.parse(xmlhttp.responseText));
     $(document).ready(function ($) {
-    $(".contact").click(function () {
-        pos = $(this).index();
-        $("#contacts ul li").removeClass();
-        $("#contacts ul li").addClass("contact");
-        $('#contacts ul li:eq('+pos+')').addClass('contact active');
+        $(".contact").click(function () {
+
+            pos = $(this).index();
+
+            $("#contacts ul li").removeClass();
+            $("#contacts ul li").addClass("contact");
+            $('#contacts ul li:eq(' + pos + ')').addClass('contact active');
+            $('.messages ul li').remove();
+
+            var xmlhttp1 = new XMLHttpRequest();
+            chatpath = "/api/chat/" + farmerid[pos]
+            xmlhttp1.open("GET", chatpath);
+            xmlhttp1.onload = function () {
+                var y = JSON.parse(xmlhttp1.responseText);
+                for (var i = 0; i < y.length; i++) {
+                    querieid = y[i].id;
+                    console.log(y)
+                    $('.contact-profile p').remove();
+                    $('<p>' + y[i].farmername.toString() + '</p>').appendTo($(".contact-profile"));
+                    if (y[i].farmerquery.toString() != null) {
+                        $('<li class="replies"><p>' + y[i].farmerquery.toString() + '</p></li>').appendTo($('.messages ul'));
+                    }
+                    if (y[i].officerquery.toString() != null) {
+                        $('<li class="sent"><p>' + y[i].officerquery.toString() + '</p></li>').appendTo($('.messages ul'));
+                    }
+
+                }
+            }
+            xmlhttp1.send();
+        });
     });
-});
     xmlhttp.abort();
 }
 function loadAPI(xml) {
     for (var i = 0; i < xml.length; i++) {
-        farmerid = xml[i].id
+        farmerid[i] = xml[i].farmerid
         $('<li class="contact"><div class="wrap"> <div class="meta"><p class="name">' + xml[i].farmername.toString() + '</p><p class="preview"></p></div></div></li>').appendTo($('#contacts ul'));
         // document.getElementById('farmername').prepend(document.createTextNode(xml[i].farmername.toString()));
     }
 }
 xmlhttp.send();
+
+function myFunction() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("contacts");
+    tr = table.getElementsByTagName("ul");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("li")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}

@@ -5,6 +5,7 @@ use App\Http\Controllers\productsave;
 use App\Http\Controllers\counter;
 use App\Http\Controllers\farmers;
 use App\Http\Controllers\products;
+use App\Http\Controllers\queries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +33,6 @@ Route::put("reject",[products::class,'reject']);
 Route::get("farmerslist",[farmers::class,'farmerslist']); 
 Route::get("farmerdetails/{deal_dets}",[farmers::class,'deal_dets']);
 Route::get("chat",[farmers::class,'all_farmers_for_chat']);
+Route::get("chat/{chatfarmer}",[queries::class,'get_farmer_chat']);
+Route::put("sendmessage",[queries::class,'sendmessage']);
+Route::post("startmessage",[queries::class,'newmessage']);
