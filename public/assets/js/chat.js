@@ -47,41 +47,24 @@ function newMessage() {
         scrollTop: $(document).height()
     }, "fast");
     let messagejson
-    if (querieid != null) {
-        messagejson = {
-            id: querieid,
-            mymessage: message
-        }
-        $.ajax({
-        type: "PUT",   //type is any HTTP method
+    messagejson = {
+        farmerid: farmerid[pos],
+        mymessage: message
+    }
+    console.log(messagejson)
+    $.ajax({
+        type: "POST",   //type is any HTTP method
         contentType: "application/json; charset=utf-8",
-        url: "/api/sendmessage",    //Your api url
+        url: "/api/startmessage",    //Your api url
         data: JSON.stringify(messagejson),   //Data as js object
         dataType: "json",
         success: function () {
         }
     });
-    }
-    else{
-        messagejson = {
-            farmerid:farmerid[pos],
-            mymessage: message
-        }
-        console.log(messagejson)
-        $.ajax({
-            type: "POST",   //type is any HTTP method
-            contentType: "application/json; charset=utf-8",
-            url: "/api/startmessage",    //Your api url
-            data: JSON.stringify(messagejson),   //Data as js object
-            dataType: "json",
-            success: function () {
-            }
-        });
-    }
     console.log(querieid)
     console.log(messagejson);
     // console.log(document.location.pathname = "api/counter")
-    
+
 };
 
 $('.submit').click(function () {
@@ -120,11 +103,11 @@ xmlhttp.onload = function () {
                     console.log(y)
                     $('.contact-profile p').remove();
                     $('<p>' + y[i].farmername.toString() + '</p>').appendTo($(".contact-profile"));
-                    if (y[i].farmerquery.toString() != null) {
-                        $('<li class="replies"><p>' + y[i].farmerquery.toString() + '</p></li>').appendTo($('.messages ul'));
+                    if (y[i].officermessage != null) {
+                        $('<li class="sent"><p>' + y[i].officermessage.toString() + '</p></li>').appendTo($('.messages ul'));
                     }
-                    if (y[i].officerquery.toString() != null) {
-                        $('<li class="sent"><p>' + y[i].officerquery.toString() + '</p></li>').appendTo($('.messages ul'));
+                    if (y[i].farmermessage != null) {
+                        $('<li class="replies"><p>' + y[i].farmermessage.toString() + '</p></li>').appendTo($('.messages ul'));
                     }
 
                 }
@@ -137,6 +120,7 @@ xmlhttp.onload = function () {
 function loadAPI(xml) {
     for (var i = 0; i < xml.length; i++) {
         farmerid[i] = xml[i].farmerid
+        console.log(farmerid)
         $('<li class="contact"><div class="wrap"> <div class="meta"><p class="name">' + xml[i].farmername.toString() + '</p><p class="preview"></p></div></div></li>').appendTo($('#contacts ul'));
         // document.getElementById('farmername').prepend(document.createTextNode(xml[i].farmername.toString()));
     }
