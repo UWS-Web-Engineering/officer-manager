@@ -10,9 +10,9 @@ class counter extends Controller
     function counter_offer(Request $req)
     {
         $emp=offer::find($req->id);
-        $emp->prodprice=$req->prodprice;
-        $emp->prodqty=$req->prodqty;
-        $emp->fulfill=$req->prodfulfill;
+        $emp->cropprice=$req->prodprice;
+        $emp->cropqty=$req->prodqty;
+        $emp->expecteddate=$req->prodfulfill;
         $emp->negotiation=0;
         $resp=$emp->save();
         $result=["Result"=>"No Success Update"];

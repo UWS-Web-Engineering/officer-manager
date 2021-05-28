@@ -13,25 +13,25 @@ class farmers extends Controller
     function farmerslist()
     {
         return DB::table('crops')
-        ->join('farmers','farmers.id','=','crops.farmerid')
-        ->select('crops.*','farmers.*')
+        ->join('Farmer','Farmer.id','=','crops.farmerid')
+        ->select('crops.*','Farmer.*')
         ->where('crops.cropstatus','=','1')
         ->get();
     }
     function deal_dets($req)
     {
         return DB::table('crops')
-        ->join('farmers','farmers.id','=','crops.farmerid')
-        ->select('crops.*','farmers.*')
+        ->join('Farmer','Farmer.id','=','crops.farmerid')
+        ->select('crops.*','Farmer.*')
         ->where('crops.farmerid','=',$req)
         ->get();
     }
     function all_farmers_for_chat()
     {
         return DB::table('crops')
-        ->join('farmers','crops.farmerid','=','farmers.id')
-        ->join('officers','crops.officerid','=','officers.id')
-        ->select('farmers.*','officers.*','crops.farmerid')
+        ->join('Farmer','crops.farmerid','=','Farmer.id')
+        ->join('Officer','crops.officerid','=','Officer.id')
+        ->select('Farmer.*','Officer.*','crops.farmerid')
         ->get();
     }
 }
