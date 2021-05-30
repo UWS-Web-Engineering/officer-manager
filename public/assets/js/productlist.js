@@ -79,8 +79,22 @@ xmlhttp.onload = function() {
 };
 
 function loadAPI(xml) {
-    var table = "<table><tr><th>Crop</th><th>Crop Price</th><th>Crop Quantity</th><th>Expected Date</th></tr>";
+    let status;
+    console.log(xml)
+    var table = "<table><tr><th>Crop</th><th>Crop Price</th><th>Crop Quantity</th><th>Expected Date</th><th>Status</th></tr>";
     for (var i = 0; i < xml.length; i++) {
+        if((xml[i].negotiation==1 || xml[i].negotiation==0)&&xml[i].cropstatus==null)
+        {
+            status="In Progress"
+        }
+        else if(xml[i].cropstatus==1)
+        {
+            status="Deal Done"
+        }
+        else if((xml[i].negotiation!=1 || xml[i].negotiation!=0)&&xml[i].cropstatus==null)
+        {
+            status="No Offer"
+        }
         table += "<tr><td>" +
             xml[i].cropname +
             "</td><td>" +
@@ -89,6 +103,8 @@ function loadAPI(xml) {
             xml[i].cropqty +
             "</td><td>" +
             xml[i].expecteddate +
+            "</td><td>" +
+            status +
             "</td></tr>";
     }
     table += "</table>";

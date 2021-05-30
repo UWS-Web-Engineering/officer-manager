@@ -21,12 +21,12 @@ function loadAPI(xml) {
             document.getElementById('qna').innerHTML = QnA[1];
             document.getElementById('action_button').style.display = "block";
         }
-        document.getElementById('product_name').innerHTML = xml[i].prodname;
+        document.getElementById('product_name').innerHTML = xml[i].cropname;
         // document.getElementById('farmer_name').innerHTML=xml[i].farmername;
-        document.getElementById('product_price').innerHTML = xml[i].prodprice;
-        document.getElementById('product_qauntity').innerHTML = xml[i].prodqty;
-        document.getElementById('fulfill').innerHTML = xml[i].fulfill;
-        document.getElementById('product_counter_name').innerHTML = xml[i].prodname;
+        document.getElementById('product_price').innerHTML = xml[i].cropprice;
+        document.getElementById('product_qauntity').innerHTML = xml[i].cropqty;
+        document.getElementById('fulfill').innerHTML = xml[i].expecteddate;
+        document.getElementById('product_counter_name').innerHTML = xml[i].cropname;
     }
 }
 xmlhttp.send();
@@ -106,11 +106,11 @@ function acceptoffer() {
         offerdets = JSON.parse(xmlhttp.responseText);
         for (var i = 0; i < offerdets.length; i++) {
             product = {
-                id: offerdets[i].productid,
-                prodname: offerdets[i].prodname,
-                prodprice: offerdets[i].prodprice,
-                prodqty: offerdets[i].prodqty,
-                prodfulfill: offerdets[i].fulfill,
+                id: offerdets[i].cropid,
+                prodname: offerdets[i].cropname,
+                prodprice: offerdets[i].cropprice,
+                prodqty: offerdets[i].cropqty,
+                prodfulfill: offerdets[i].expecteddate,
                 farmerid: offerdets[i].farmerid
             }
         }

@@ -34,5 +34,5 @@ Route::get("farmerslist",[farmers::class,'farmerslist']);
 Route::get("farmerdetails/{deal_dets}",[farmers::class,'deal_dets']);
 Route::get("chat",[farmers::class,'all_farmers_for_chat']);
 Route::get("chat/{chatfarmer}",[queries::class,'get_farmer_chat']);
-Route::put("sendmessage",[queries::class,'sendmessage']);
+Route::put("sendmessage",[queries::class,'addFarmerMessage']);
 Route::post("startmessage",[queries::class,'newmessage']);

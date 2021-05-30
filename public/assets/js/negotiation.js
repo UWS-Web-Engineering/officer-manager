@@ -17,7 +17,7 @@ function loadAPI(xml) {
         let status;
         
         console.log(xml[i])
-        if (xml[i].cropstatus == null && xml[i].rejected==0 && xml[i].cropstatus!=1) {
+        if (xml[i].cropstatus == null && xml[i].rejected==0) {
             ids.push(xml[i].id)
             status = "In Progress"
             table += "<tr><td>" +
@@ -25,7 +25,7 @@ function loadAPI(xml) {
                 "</td><td>" +
                 xml[i].farmername +
                 "</td><td>" +
-                xml[i].fulfill +
+                xml[i].expecteddate +
                 "</td><td>" +
                 status +
                 "</td></tr>";

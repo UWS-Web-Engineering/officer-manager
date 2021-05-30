@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\farmer;
-use App\Models\querie;
+use App\Models\message;
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\Console;
 use Illuminate\Support\Facades\DB;
@@ -12,19 +12,21 @@ class queries extends Controller
 {
     function get_farmer_chat($req)
     {
-        return DB::table('queries')
-            ->join('officers', 'queries.officerid', '=', 'officers.id')
-            ->join('farmers', 'queries.farmerid', '=', 'farmers.id')
-            ->select('queries.*', 'farmers.farmername', 'officers.officername')
+        return DB::table('messages')
+            ->join('officers', 'messages.officerid', '=', 'officers.id')
+            ->join('farmers', 'messages.farmerid', '=', 'farmers.id')
+            ->select('messages.*', 'farmers.farmername', 'officers.officername')
             ->where('farmerid', '=', $req)
             ->get();
     }
-    function sendmessage(Request $req)
+    function newmessage(Request $req)
     {
-        $emp=querie::find($req->id);
-        $emp->officerquery=$req->mymessage;
+        $emp=new message();
+        $emp->farmerid=$req->farmerid;
+        $emp->officermessage=$req->mymessage;
         $emp->officerid=1;
-        $emp->isread=true;
+        $emp->isread= false;
+        
         $resp=$emp->save();
         $result=["Result"=>"No Success Update"];
         if($resp)
@@ -33,13 +35,11 @@ class queries extends Controller
         }
         return $result;
     }
-    function newmessage(Request $req)
+    function addFarmerMessage(Request $req)
     {
-        $emp=new querie();
-        $emp->farmerid=$req->farmerid;
-        $emp->officerquery=$req->mymessage;
-        $emp->officerid=1;
-        $emp->isread=false;
+        $emp=message::find($req->id);
+        $emp->farmermessage=$req->farmermessage;
+        $emp->isread= true;
         $resp=$emp->save();
         $result=["Result"=>"No Success Update"];
         if($resp)
