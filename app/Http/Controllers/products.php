@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\crop;
 use App\Models\offer;
 use App\Models\querie;
+Use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\Console;
 
@@ -11,7 +12,11 @@ class products extends Controller
 {
     function getproduct()
     {
-        return crop::all();
+        return DB::table('crops')
+        ->leftJoin('offers','offers.cropid','=','crops.id')
+        ->select('crops.*','offers.officerid','offers.negotiation','crops.cropstatus')
+        ->get();
+        //return crop::all();
     }
     function accept(Request $req)
     {
