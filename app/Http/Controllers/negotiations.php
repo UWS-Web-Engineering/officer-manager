@@ -12,18 +12,18 @@ class negotiations extends Controller
     function negotiate()
     {
         return DB::table('offers')
-        ->join('Farmer','offers.farmerid','=','Farmer.id')
+        ->join('farmers','offers.farmerid','=','farmers.id')
         ->join('crops','offers.cropid','=','crops.id')
-        ->select('crops.cropname','Farmer.farmername','offers.id','offers.expecteddate','crops.cropstatus','offers.rejected','crops.cropstatus')
+        ->select('crops.cropname','farmers.farmername','offers.id','offers.expecteddate','crops.cropstatus','offers.rejected','crops.cropstatus')
         ->where('offers.rejected','=',0)
         ->get();
     }
     function negotiate_dets($req)
     {
         return DB::table('offers')
-        ->join('Farmer','offers.farmerid','=','Farmer.id')
+        ->join('farmers','offers.farmerid','=','farmers.id')
         ->join('crops','offers.cropid','=','crops.id')
-        ->select('crops.cropname','Farmer.farmername','offers.id','offers.expecteddate','crops.cropstatus','offers.cropqty','offers.cropprice','offers.farmerid','offers.cropid','offers.negotiation')
+        ->select('crops.cropname','farmers.farmername','offers.id','offers.expecteddate','crops.cropstatus','offers.cropqty','offers.cropprice','offers.farmerid','offers.cropid','offers.negotiation')
         ->where('offers.id','=',$req)
         ->get();
     }
