@@ -13,9 +13,9 @@ class queries extends Controller
     function get_farmer_chat($req)
     {
         return DB::table('messages')
-            ->join('Officer', 'messages.officerid', '=', 'Officer.id')
-            ->join('Farmer', 'messages.farmerid', '=', 'Farmer.id')
-            ->select('messages.*', 'Farmer.farmername', 'Officer.officername')
+            ->join('officers', 'messages.officerid', '=', 'officers.id')
+            ->join('farmers', 'messages.farmerid', '=', 'farmers.id')
+            ->select('messages.*', 'farmers.farmername', 'officers.officername')
             ->where('farmerid', '=', $req)
             ->get();
     }
