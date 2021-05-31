@@ -79,6 +79,7 @@ $(window).on('keydown', function (e) {
 });
 
 var xmlhttp = new XMLHttpRequest();
+xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
 xmlhttp.open("GET", "/api/chat");
 var farmerid = [], pos;
 xmlhttp.onload = function () {
@@ -158,6 +159,7 @@ function logout()
         url: "https://usercontroller.include.ninja/api/logout",
         dataType: "json",
         success: function (response) {
+            localStorage.clear();
             window.location="/"
         }
     });

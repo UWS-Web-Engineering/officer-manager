@@ -55,6 +55,7 @@ function opensuccess()
 
     const xhr = new XMLHttpRequest(); 
     xhr.open("POST", "api/product");
+    xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
     xhr.setRequestHeader("Content-Type", "application/json");// add token in header
     xhr.send(json);
     var z = document.getElementById("successmodal")
@@ -73,6 +74,7 @@ function closesuccess()
 
 var loadTable = document.getElementById('myTable');
 var xmlhttp = new XMLHttpRequest();
+xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
 xmlhttp.open("GET", "/api/products");
 xmlhttp.onload = function() {
     loadAPI(JSON.parse(xmlhttp.responseText));
@@ -122,6 +124,7 @@ function logout()
         url: "https://usercontroller.include.ninja/api/logout",
         dataType: "json",
         success: function (response) {
+            localStorage.clear();
             window.location="/"
         }
     });

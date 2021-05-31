@@ -8,9 +8,8 @@ function logout()
         url: "https://usercontroller.include.ninja/api/logout",
         dataType: "json",
         success: function (response) {
-            console.log(localStorage.getItem('token'))
+            localStorage.clear();
             window.location="/"
-            
         }
     });
 }

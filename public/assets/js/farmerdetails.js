@@ -1,6 +1,7 @@
 var xmlhttp = new XMLHttpRequest();
 var t = "/api" + document.location.pathname.toString();
 console.log(t)
+xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
 xmlhttp.open("GET", t);
 var offerid;
 xmlhttp.onload = function () {

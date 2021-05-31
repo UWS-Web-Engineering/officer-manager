@@ -1,5 +1,6 @@
 var xmlhttp = new XMLHttpRequest();
 var t = "/api" + document.location.pathname.toString();
+xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
 xmlhttp.open("GET", t);
 var offerid;
 xmlhttp.onload = function () {
@@ -69,6 +70,7 @@ function opensuccess() {
     // console.log(document.location.pathname = "api/counter")
     $.ajax({
         type: "PUT",   //type is any HTTP method
+        headers: {"Authorization": localStorage.getItem('token')},
         contentType: "application/json; charset=utf-8",
         url: "/api/counter",    //Your api url
         data: JSON.stringify(product),   //Data as js object
