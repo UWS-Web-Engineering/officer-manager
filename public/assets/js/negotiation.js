@@ -1,6 +1,7 @@
 var loadTable = document.getElementById('myTable');
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.open("GET", "/api/negotiations");
+xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
 xmlhttp.onload = function () {
     loadAPI(JSON.parse(xmlhttp.responseText));
     $(document).ready(function ($) {

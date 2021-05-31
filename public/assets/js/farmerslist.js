@@ -24,6 +24,7 @@ function myFunction() {
 var loadTable = document.getElementById('myTable');
 let ids = []
 var xmlhttp = new XMLHttpRequest();
+xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
 xmlhttp.open("GET", "/api/farmerslist");
 xmlhttp.onload = function () {
     loadAPI(JSON.parse(xmlhttp.responseText));
@@ -76,6 +77,7 @@ function logout()
         url: "https://usercontroller.include.ninja/api/logout",
         dataType: "json",
         success: function (response) {
+            localStorage.clear();
             window.location="/"
         }
     });
