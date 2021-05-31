@@ -26,6 +26,14 @@ class farmers extends Controller
         ->where('crops.farmerid','=',$req)
         ->get();
     }
+    function all_officers_for_chat()
+    {
+        return DB::table('crops')
+        ->join('farmers','crops.farmerid','=','farmers.id')
+        ->join('officers','crops.officerid','=','officers.id')
+        ->select('farmers.*','officers.*','crops.farmerid')
+        ->get();
+    }
     function all_farmers_for_chat()
     {
         return DB::table('crops')

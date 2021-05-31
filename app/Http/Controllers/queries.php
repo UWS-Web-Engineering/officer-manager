@@ -17,6 +17,19 @@ class queries extends Controller
             ->join('farmers', 'messages.farmerid', '=', 'farmers.id')
             ->select('messages.*', 'farmers.farmername', 'officers.officername')
             ->where('farmerid', '=', $req)
+            ->orderBy('id','asc')
+            ->get();
+    }
+    function get_officers_chat($req)
+    {
+        return DB::table('messages')
+            ->join('officers', 'messages.officerid', '=', 'officers.id')
+            ->join('farmers', 'messages.farmerid', '=', 'farmers.id')
+            ->join('managers','officers.managerid','=','managers.id')
+            ->join('crops','crops.farmerid','=','farmers.id')
+            ->select('messages.*', 'farmers.farmername', 'officers.officername','managers.companyname','crops.*','messages.id')
+            //->where('officerid', '=', $req)
+            ->orderBy('messages.id','asc')
             ->get();
     }
     function newmessage(Request $req)
