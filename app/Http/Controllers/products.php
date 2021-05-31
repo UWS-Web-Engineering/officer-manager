@@ -47,4 +47,20 @@ class products extends Controller
         }
         return $result;
     }
+    function get_all_crops_farmers($req)
+    {
+        return DB::table('crops')
+        ->select('crops.id','crops.cropname','crops.cropimg','crops.cropqty')
+        ->where('farmerid', '=',$req)
+        ->get();
+    }
+    function get_managers_for_farmers(Request $req)
+    {
+        return DB::table('crops')
+        ->join('officers','officers.id','=','crops.officerid')
+        ->join('managers','officers.managerid','=','managers.id')
+        ->select('managers.id','managers.companyname','crops.cropqty','crops.cropname')
+        ->where([['farmerid', '=',$req->farmerid],['crops.id', '=',$req->cropid]])
+        ->get();
+    }
 }

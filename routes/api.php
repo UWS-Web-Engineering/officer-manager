@@ -38,3 +38,5 @@ Route::put("sendmessage",[queries::class,'addFarmerMessage']);
 Route::post("startmessage",[queries::class,'newmessage']);
 Route::get("farmerchat",[farmers::class,'all_officers_for_chat']);
 Route::get("farmerchat/{chatofficer}",[queries::class,'get_officers_chat']);
+Route::get("get_all_crops_farmers/{farmerid}",[products::class,'get_all_crops_farmers']);
+Route::get("get_managers_for_farmers",[products::class,'get_managers_for_farmers']);
