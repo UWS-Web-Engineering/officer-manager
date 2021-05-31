@@ -16,6 +16,7 @@
             <a href="/farmerslist">Farmers</a>
             <a href="/queries">Queries</a>
             <a href="/negotiation">Negotiations</a>
+            <a style="float:right" onclick="logout()">Logout</a>
         </div>
     </div>
     <br>
