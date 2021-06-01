@@ -1,3 +1,6 @@
+var companyname = document.getElementById("companyname");
+var lscompanyname = document.createTextNode(localStorage.getItem('companyname'));
+companyname.appendChild(lscompanyname);
 var querieid
 $(".messages").animate({
     scrollTop: $(document).height()

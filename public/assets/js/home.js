@@ -1,3 +1,10 @@
+var companyname = document.getElementById("companyname");
+var lscompanyname = document.createTextNode(localStorage.getItem('companyname'));
+companyname.appendChild(lscompanyname);
+var companyname = document.getElementById("name");
+var lscompanyname = document.createTextNode(" "+localStorage.getItem('officername'));
+companyname.appendChild(lscompanyname);
+// document.getElementById('companyname').createTextNode(localStorage.getItem('companyname'))
 function logout()
 {
     $.ajax({
