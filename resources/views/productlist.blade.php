@@ -42,11 +42,11 @@
                         </div>
                         <div class="col-75">
                             <select id="prodname" name="prodname">
-                                <option value="https://www.jessicagavin.com/wp-content/uploads/2019/02/carrots-7.jpg">Carrot</option>
-                                <option value="https://www.foodbusinessnews.net/ext/resources/2021/2/OrganicWheat_Lead.jpg?t=1613050685&width=1080">Wheat</option>
-                                <option value="https://www.isaaa.org/kc/cropbiotechupdate/files/images/1232019105233PM.jpg">Potato</option>
-                                <option value="https://keralakaumudi.com/web-news/en/2020/10/NMAN0183417/image/onion.1.791031.jpg">Onion</option>
-                                <option value="https://www.thespruce.com/thmb/2xsOgzzmdhCtReu0pUt3Kbaop7g=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/how-to-grow-cauliflower-1403494-hero-76cf5f524a564adabb1ac6adfa311482.jpg">Cauliflower</option>
+                                <option value="http://bettybondoc.com/we/carrot.jpg">Carrot</option>
+                                <option value="http://bettybondoc.com/we/wheat.jpg">Wheat</option>
+                                <option value="http://bettybondoc.com/we/potato.jpg">Potato</option>
+                                <option value="http://bettybondoc.com/we/onion.jpg">Onion</option>
+                                <option value="http://bettybondoc.com/we/cauliflower.jpg">Cauliflower</option>
                               </select>
                         </div>
                     </div>
