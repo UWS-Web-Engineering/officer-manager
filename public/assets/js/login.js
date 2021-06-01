@@ -190,7 +190,7 @@ function login() {
                 //     }
                 // });
                 xmlhttp1.send();
-                window.location = "https://gateway.include.ninja/api/officer-manager/home"
+                window.location = "/home"
             }
             
             else if(response.user.userRole == "Manager")
@@ -206,7 +206,7 @@ function login() {
                     // xmlhttp2.abort();
                 };
                 xmlhttp2.send();
-                window.location = "https://gateway.include.ninja/api/officer-manager/dashboard"
+                window.location = "/dashboard"
             }
             
             
