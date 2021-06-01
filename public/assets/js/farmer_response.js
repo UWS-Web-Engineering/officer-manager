@@ -13,16 +13,15 @@ xmlhttp.onload = function () {
     xmlhttp.abort();
 }
 function loadAPI(xml) {
-    var QnA=['You have already countered this offer. Please wait for farmer to respond. ','Do you accept this offer?']
+    var QnA = ['You have already countered this offer. Please wait for farmer to respond. ', 'Do you accept this offer?']
     for (var i = 0; i < xml.length; i++) {
         offerid = xml[i].id
         document.getElementById('farmername').prepend(document.createTextNode(xml[i].farmername.toString()));
-        if(xml[i].negotiation==0)
-        {
+        if (xml[i].negotiation == 0) {
             document.getElementById('qna').innerHTML = QnA[0];
             document.getElementById('action_button').style.display = "none";
         }
-        else{
+        else {
             document.getElementById('qna').innerHTML = QnA[1];
             document.getElementById('action_button').style.display = "block";
         }
@@ -74,7 +73,7 @@ function opensuccess() {
     // console.log(document.location.pathname = "api/counter")
     $.ajax({
         type: "PUT",   //type is any HTTP method
-        headers: {"Authorization": localStorage.getItem('token')},
+        headers: { "Authorization": localStorage.getItem('token') },
         contentType: "application/json; charset=utf-8",
         url: "https://gateway.include.ninja/api/officer-manager/counter",    //Your api url
         data: JSON.stringify(product),   //Data as js object
@@ -125,7 +124,7 @@ function acceptoffer() {
         // console.log(document.location.pathname = "api/counter")
         $.ajax({
             type: "PUT",
-            headers: {"Authorization": localStorage.getItem('token')},   //type is any HTTP method
+            headers: { "Authorization": localStorage.getItem('token') },   //type is any HTTP method
             contentType: "application/json; charset=utf-8",
             url: "https://gateway.include.ninja/api/officer-manager/accept",    //Your api url
             data: JSON.stringify(product),   //Data as js object
@@ -139,8 +138,7 @@ function acceptoffer() {
     }
     xmlhttp.send();
 }
-function rejectoffer()
-{
+function rejectoffer() {
     let product
     xmlhttp.open("GET", t);
     xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
