@@ -67,7 +67,7 @@ class queries extends Controller
         ->join('officers', 'messages.officerid', '=', 'officers.id')
         ->join('farmers', 'messages.farmerid', '=', 'farmers.id')
         ->select('messages.*', 'farmers.farmername', 'officers.officername')
-        ->where([['crops.officerid', '=',$req->officerid],['crops.farmerid', '=',$req->farmerid]])
+        ->where([['messages.officerid', '=',$req->officerid],['messages.farmerid', '=',$req->farmerid]])
         ->orderBy('id','asc')
         ->get();
     }
