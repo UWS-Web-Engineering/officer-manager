@@ -110,11 +110,12 @@ function acceptoffer() {
     xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
     xmlhttp.onload = function () {
         offerdets = JSON.parse(xmlhttp.responseText);
+        console.log(offerdets)
         for (var i = 0; i < offerdets.length; i++) {
             product = {
                 id: offerdets[i].cropid,
                 prodname: offerdets[i].cropname,
-                prodprice: offerdets[i].cropprice,
+                prodprice: parseInt(offerdets[i].cropprice),
                 prodqty: offerdets[i].cropqty,
                 prodfulfill: offerdets[i].expecteddate,
                 farmerid: offerdets[i].farmerid
