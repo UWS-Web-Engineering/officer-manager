@@ -173,6 +173,7 @@ function login() {
                     localStorage.setItem('officerid',JSON.parse(xmlhttp1.responseText)[0].id)
                     localStorage.setItem('officername',JSON.parse(xmlhttp1.responseText)[0].officername)
                     localStorage.setItem('companyname',JSON.parse(xmlhttp1.responseText)[0].companyname)
+                    window.location = "/home"
                     // xmlhttp1.abort();
                 };
                 // $.ajax({
@@ -188,8 +189,8 @@ function login() {
                 //         localStorage.setItem('officerid', JSON.parse(response.responseText)[0].id);
                 //     }
                 // });
+                
                 xmlhttp1.send();
-                window.location = "/home"
             }
             
             else if(response.user.userRole == "Manager")
@@ -202,13 +203,14 @@ function login() {
                     localStorage.setItem('managerid',JSON.parse(xmlhttp2.responseText)[0].id)
                     localStorage.setItem('companyname',JSON.parse(xmlhttp2.responseText)[0].companyname)
                     localStorage.setItem('managername',JSON.parse(xmlhttp2.responseText)[0].managername)
+                     window.location = "/dashboard"
                     // xmlhttp2.abort();
                 };
+                
                 xmlhttp2.send();
-                window.location = "/dashboard"
             }
             
-            
+           
             // 
         }
     });
