@@ -23,7 +23,7 @@ function loadAPI(xml) {
         let status;
         
         console.log(xml[i])
-        if (xml[i].cropstatus == null && xml[i].rejected==0) {
+        if (xml[i].cropstatus == null && xml[i].rejected==null) {
             ids.push(xml[i].id)
             status = "In Progress"
             table += "<tr><td>" +
