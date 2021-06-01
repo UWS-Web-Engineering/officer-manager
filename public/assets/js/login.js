@@ -155,7 +155,6 @@ function login() {
     console.log(json);
 
     $.ajax({
-
         type: "POST",
         headers: { "Authorization": localStorage.getItem('token'),'Accept': 'application/json' },
         contentType: "application/json",
