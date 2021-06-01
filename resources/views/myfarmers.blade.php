@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Advertising Crops</h1>
+            <h1>Farmers</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Advertising Crops</li>
+              <li class="breadcrumb-item active">Farmers</li>
             </ol>
           </div>
         </div>
@@ -32,24 +32,24 @@
                           Officer
                       </th>
                       <th style="width: 15%">
-                          Product
+                          Farmer
                       </th>
                       <th style="width: 15%">
-                          Price
+                          Email
                       </th>
                       <th style="width: 15%">
-                          Quantity
+                          Phone
                       </th>
                       <th style="width: 15%">
-                          Progress
+                          Address
                       </th>
                       <th>
-                          End Date
+                          Crop
                       </th>
                       
                   </tr>
               </thead>
-              <tbody id="Advertising-tbody">
+              <tbody id="farmers-tbody">
                   <tr>
                     <td colspan="6" align="center">Loading...</td>
                   </tr>
@@ -70,30 +70,21 @@
   $(function(){
       // Get Officers Listing
       $.ajax({
-        url: 'api/advertisingcrops',
+        url: 'api/myfarmers',
         type: "GET",
         success: function(data) {
-                $('#Advertising-tbody').html('');
-                let Status = '';
-                let complete = 10;
+                $('#farmers-tbody').html('');
+                
                 $.each(data, function(key, value) {
-                  complete += 10;
-                  $('#Advertising-tbody').append(`
+
+                  $('#farmers-tbody').append(`
                       <tr>
                         <td>`+value.officername+`</td>
+                        <td>`+value.farmername+`</td>
+                        <td>`+value.farmeremail+`</td>
+                        <td>`+value.farmerphone+`</td>
+                        <td>`+value.farmerAddress+`</td>
                         <td>`+value.cropname+`</td>
-                        <td>$`+value.cropprice+`</td>
-                        <td>`+value.cropqty+`kg</td>
-                        <td class="project_progress">
-                          <div class="progress progress-sm">
-                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="`+complete+`" aria-valuemin="0" aria-valuemax="100" style="width: `+complete+`%">
-                            </div>
-                          </div>
-                          <small>
-                          `+complete+`% Complete
-                          </small>
-                        </td>
-                        <td>`+value.expecteddate+`</td>
                       </tr>
                   `);
                 });  

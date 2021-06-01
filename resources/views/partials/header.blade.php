@@ -30,7 +30,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a href="#" class="d-block">Manager Name</a>
+          <a href="#" class="d-block">Roji Kayastha Prajapati</a>
         </div>
       </div>
 
@@ -40,7 +40,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{url('/dashboard')}}" class="nav-link active">
+            <a href="{{url('/dashboard')}}" class="nav-link {{ (request()->is('dashboard')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbaord
@@ -50,87 +50,52 @@
           <li class="nav-item">
 
           <!-- <li class="nav-item menu-open">-->            
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link {{ (request()->is('officers')) ? 'menu-open' : '' }}">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Operators
+                Officers
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url('/operators')}}" class="nav-link">
+                <a href="{{url('/officers')}}" class="nav-link  {{ (request()->is('officers')) ? 'active' : '' }}">
                   <i class="nav-icon fas fa-table"></i>
-                  <p>View Operators</p>
+                  <p>View Officers</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="add-operator.html" class="nav-link">
                   <i class="nav-icon fas fa-plus-square"></i>
-                  <p>Add Operator</p>
+                  <p>Add Officer</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
+          
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ url('/advertisingcrops') }}" class="nav-link  {{ (request()->is('advertisingcrops')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-leaf"></i>
               <p>
-                Advertising Crop
-                <i class="right fas fa-angle-left"></i>
+                Advertising Crops
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="advertising.html" class="nav-link">
-                  <i class="nav-icon fas fa-table"></i>
-                  <p>View Advertising</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="add-advertising.html" class="nav-link">
-                  <i class="nav-icon fas fa-plus-square"></i>
-                  <p>Add Advertising</p>
-                </a>
-              </li>
-            </ul>
           </li>
+          
           <li class="nav-item">
-            <a href="dashboard.html" class="nav-link">
+            <a href="{{ url('/myfarmers') }}" class="nav-link  {{ (request()->is('myfarmers')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Farmers
               </p>
             </a>
           </li>
+          
           <li class="nav-item">
-            <a href="farmers.html" class="nav-link">
-              <i class="nav-icon fas fa-question"></i>
+            <a href="{{ url('/myqueries') }}" class="nav-link  {{ (request()->is('myqueries')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 Queries
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="quiries.html" class="nav-link">
-                  <i class="nav-icon fas fa-table"></i>
-                  <p>View Queries</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="add-quiery.html" class="nav-link">
-                  <i class="nav-icon fas fa-plus-square"></i>
-                  <p>Add Queries</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="change-password.html" class="nav-link">
-              <i class="nav-icon fas fa-key"></i>
-              <p>
-                Change Password
               </p>
             </a>
           </li>
