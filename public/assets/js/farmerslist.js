@@ -27,8 +27,9 @@ function myFunction() {
 var loadTable = document.getElementById('myTable');
 let ids = []
 var xmlhttp = new XMLHttpRequest();
-xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
+
 xmlhttp.open("GET", "/api/farmerslist");
+xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
 xmlhttp.onload = function () {
     loadAPI(JSON.parse(xmlhttp.responseText));
     $(document).ready(function ($) {
