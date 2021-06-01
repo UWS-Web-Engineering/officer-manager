@@ -16,7 +16,7 @@ class productsave extends Controller
         $emp->cropqty=$req->prodqty;
         $emp->expecteddate=$req->prodfulfill;
         $emp->cropstatus=null;
-        $emp->officerid=1;
+        $emp->officerid=$req->officerid;
         $resp=$emp->save();
         $result=["Result"=>"No Success"];
         if($resp)
