@@ -31,3 +31,4 @@ class Managers extends Migration
         Schema::dropIfExists('managers');
     }
 }
+
