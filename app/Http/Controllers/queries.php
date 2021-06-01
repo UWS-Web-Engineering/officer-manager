@@ -37,7 +37,7 @@ class queries extends Controller
         $emp=new message();
         $emp->farmerid=$req->farmerid;
         $emp->officermessage=$req->mymessage;
-        $emp->officerid=1;
+        $emp->officerid=$req->officerid;
         $emp->isread= false;
         
         $resp=$emp->save();
