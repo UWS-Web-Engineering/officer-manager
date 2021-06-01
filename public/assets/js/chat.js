@@ -52,7 +52,8 @@ function newMessage() {
     let messagejson
     messagejson = {
         farmerid: farmerid[pos],
-        mymessage: message
+        mymessage: message,
+        officerid:localStorage.getItem('officerid')
     }
     console.log(messagejson)
     $.ajax({
