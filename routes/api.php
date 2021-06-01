@@ -10,6 +10,7 @@ use App\Http\Controllers\managers;
 use App\Http\Controllers\officers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Manager;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,3 +53,13 @@ Route::get("get_officers_under_manager",[farmers::class,'get_officers_under_mana
 Route::get("get_all_dets",[farmers::class,'get_all_dets']);
 Route::get("get_all_queries",[queries::class,"get_all_queries"]);
 Route::get("get_all_queries_by_officer",[queries::class,'get_all_queries_by_officer']);
+
+// Start Roji API Route
+Route::get("dashboard/{companyID}",[Manager::class,'dashboardcounter']);
+Route::get("cropsByRegion",[Manager::class,'cropsByRegion']);
+Route::get("farmersByRegion",[Manager::class,'farmersByRegion']);
+Route::get("queries",[Manager::class,'farmerQueries']);
+Route::get("officers/{companyID}",[Manager::class,'getMyOfficers']);
+Route::get("advertisingcrops",[Manager::class,'getproducts']);
+Route::get("myfarmers",[Manager::class,'myfarmers']);
+// End Roji API Route

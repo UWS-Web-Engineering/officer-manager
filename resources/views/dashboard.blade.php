@@ -33,7 +33,7 @@
             
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>5</h3>
+                <h3 id="operator_count"></h3>
 
                 <p>Operators</p>
               </div>
@@ -48,7 +48,7 @@
            
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3 id="advertising_count"><sup style="font-size: 20px">%</sup></h3>
 
                 <p>Advertising Crops</p>
               </div>
@@ -63,7 +63,7 @@
             
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3 id="farmer_count"></h3>
                 <p>Farmers</p>
               </div>
               <div class="icon">
@@ -77,7 +77,7 @@
            
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3 id="query_count"></h3>
                 <p>Queries</p>
               </div>
               <div class="icon">
@@ -94,37 +94,20 @@
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Online Store Visitors</h3>
-                  <a href="javascript:void(0);">View Report</a>
+                  <h3 class="card-title">Region Wise Crops</h3>
                 </div>
               </div>
               <div class="card-body">
-                <div class="d-flex">
-                  <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">820</span>
-                    <span>Visitors Over Time</span>
-                  </p>
-                  <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-success">
-                      <i class="fas fa-arrow-up"></i> 12.5%
-                    </span>
-                    <span class="text-muted">Since last week</span>
-                  </p>
-                </div>
-                
-
                 <div class="position-relative mb-4">
-                  <canvas id="visitors-chart" height="200"></canvas>
+                  <canvas id="crops-chart" height="200"></canvas>
                 </div>
 
                 <div class="d-flex flex-row justify-content-end">
                   <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> This Week
+                    <i class="fas fa-square text-primary"></i> No of Crops
                   </span>
 
-                  <span>
-                    <i class="fas fa-square text-gray"></i> Last Week
-                  </span>
+                  
                 </div>
               </div>
             </div>
@@ -132,15 +115,7 @@
 
             <div class="card">
               <div class="card-header border-0">
-                <h3 class="card-title">Products</h3>
-                <div class="card-tools">
-                  <a href="#" class="btn btn-tool btn-sm">
-                    <i class="fas fa-download"></i>
-                  </a>
-                  <a href="#" class="btn btn-tool btn-sm">
-                    <i class="fas fa-bars"></i>
-                  </a>
-                </div>
+                <h3 class="card-title">Advertising Crops</h3>
               </div>
               <div class="card-body table-responsive p-0">
                 <table class="table table-striped table-valign-middle">
@@ -148,129 +123,36 @@
                   <tr>
                     <th>Product</th>
                     <th>Price</th>
-                    <th>Sales</th>
-                    <th>More</th>
+                    <th>Quantity</th>
+                    <th>End Date</th>
                   </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="product-tbody">
                   <tr>
-                    <td>
-                      <img src="img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                      Some Product
-                    </td>
-                    <td>$13 USD</td>
-                    <td>
-                      <small class="text-success mr-1">
-                        <i class="fas fa-arrow-up"></i>
-                        12%
-                      </small>
-                      12,000 Sold
-                    </td>
-                    <td>
-                      <a href="#" class="text-muted">
-                        <i class="fas fa-search"></i>
-                      </a>
-                    </td>
+                    <td colspan="4" align="center">Loading...</td>
                   </tr>
-                  <tr>
-                    <td>
-                      <img src="img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                      Another Product
-                    </td>
-                    <td>$29 USD</td>
-                    <td>
-                      <small class="text-warning mr-1">
-                        <i class="fas fa-arrow-down"></i>
-                        0.5%
-                      </small>
-                      123,234 Sold
-                    </td>
-                    <td>
-                      <a href="#" class="text-muted">
-                        <i class="fas fa-search"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img src="img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                      Amazing Product
-                    </td>
-                    <td>$1,230 USD</td>
-                    <td>
-                      <small class="text-danger mr-1">
-                        <i class="fas fa-arrow-down"></i>
-                        3%
-                      </small>
-                      198 Sold
-                    </td>
-                    <td>
-                      <a href="#" class="text-muted">
-                        <i class="fas fa-search"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img src="img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                      Perfect Item
-                      <span class="badge bg-danger">NEW</span>
-                    </td>
-                    <td>$199 USD</td>
-                    <td>
-                      <small class="text-success mr-1">
-                        <i class="fas fa-arrow-up"></i>
-                        63%
-                      </small>
-                      87 Sold
-                    </td>
-                    <td>
-                      <a href="#" class="text-muted">
-                        <i class="fas fa-search"></i>
-                      </a>
-                    </td>
-                  </tr>
+                  
                   </tbody>
                 </table>
               </div>
             </div>
-            
           </div>
           
           <div class="col-lg-6">
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Sales</h3>
-                  <a href="javascript:void(0);">View Report</a>
+                  <h3 class="card-title">Region Wise Farmers</h3>
                 </div>
               </div>
               <div class="card-body">
-                <div class="d-flex">
-                  <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">$18,230.00</span>
-                    <span>Sales Over Time</span>
-                  </p>
-                  <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-success">
-                      <i class="fas fa-arrow-up"></i> 33.1%
-                    </span>
-                    <span class="text-muted">Since last month</span>
-                  </p>
-                </div>
-                
-
                 <div class="position-relative mb-4">
-                  <canvas id="sales-chart" height="200"></canvas>
+                  <canvas id="farmer-chart" height="200"></canvas>
                 </div>
 
                 <div class="d-flex flex-row justify-content-end">
                   <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> This year
-                  </span>
-
-                  <span>
-                    <i class="fas fa-square text-gray"></i> Last year
+                    <i class="fas fa-square text-primary"></i> No. of Farmers
                   </span>
                 </div>
               </div>
@@ -279,53 +161,25 @@
 
             <div class="card">
               <div class="card-header border-0">
-                <h3 class="card-title">Online Store Overview</h3>
-                <div class="card-tools">
-                  <a href="#" class="btn btn-sm btn-tool">
-                    <i class="fas fa-download"></i>
-                  </a>
-                  <a href="#" class="btn btn-sm btn-tool">
-                    <i class="fas fa-bars"></i>
-                  </a>
-                </div>
+                <h3 class="card-title">Latest Queries</h3>
               </div>
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
-                  <p class="text-success text-xl">
-                    <i class="ion ion-ios-refresh-empty"></i>
-                  </p>
-                  <p class="d-flex flex-column text-right">
-                    <span class="font-weight-bold">
-                      <i class="ion ion-android-arrow-up text-success"></i> 12%
-                    </span>
-                    <span class="text-muted">CONVERSION RATE</span>
-                  </p>
-                </div>
-                
-                <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
-                  <p class="text-warning text-xl">
-                    <i class="ion ion-ios-cart-outline"></i>
-                  </p>
-                  <p class="d-flex flex-column text-right">
-                    <span class="font-weight-bold">
-                      <i class="ion ion-android-arrow-up text-warning"></i> 0.8%
-                    </span>
-                    <span class="text-muted">SALES RATE</span>
-                  </p>
-                </div>
-                
-                <div class="d-flex justify-content-between align-items-center mb-0">
-                  <p class="text-danger text-xl">
-                    <i class="ion ion-ios-people-outline"></i>
-                  </p>
-                  <p class="d-flex flex-column text-right">
-                    <span class="font-weight-bold">
-                      <i class="ion ion-android-arrow-down text-danger"></i> 1%
-                    </span>
-                    <span class="text-muted">REGISTRATION RATE</span>
-                  </p>
-                </div>
-                
+              <div class="card-body table-responsive p-0">
+                <table class="table table-striped table-valign-middle">
+                  <thead>
+                  <tr>
+                    <th>Farmer</th>
+                    <th>Officer</th>
+                    <th>Query</th>
+                    <th>Date</th>
+                  </tr>
+                  </thead>
+                  <tbody id="queries-tbody">
+                  <tr>
+                    <td colspan="4" align="center">Loading...</td>
+                  </tr>
+                  
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -348,11 +202,234 @@
 
 @endsection
 @section('scripts')
-<!-- OPTIONAL SCRIPTS -->
+
 <script src="assets/plugins/chart.js/Chart.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<!-- <script src="js/demo.js"></script> -->
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="assets/js/pages/dashboard3.js"></script>
+<script type="text/javascript">
+  var keysForLineChart,valuesForLineChart;
+  var keysForBarChart,valuesForBarChart;
+  var a;
+  $.ajax({
+      url: 'api/cropsByRegion',
+      type: 'GET',
+      success: function(response) {
+          var obj = JSON.parse(response);
+          keysForLineChart = Object.keys(obj);
+          valuesForLineChart = Object.values(obj);
+
+          // For Chart
+          var ticksStyle = {
+            fontColor: '#495057',
+            fontStyle: 'bold'
+          }
+
+          var mode = 'index'
+          var intersect = true
+
+          var $visitorsChart = $('#crops-chart')
+          var visitorsChart = new Chart($visitorsChart, {
+            data: {
+              labels: keysForLineChart,
+              datasets: [{
+                type: 'line',
+                data: valuesForLineChart,
+                backgroundColor: 'transparent',
+                borderColor: '#007bff',
+                pointBorderColor: '#007bff',
+                pointBackgroundColor: '#007bff',
+                fill: false
+              }]
+            },
+            options: {
+              maintainAspectRatio: false,
+              tooltips: {
+                mode: mode,
+                intersect: intersect
+              },
+              hover: {
+                mode: mode,
+                intersect: intersect
+              },
+              legend: {
+                display: false
+              },
+              scales: {
+                yAxes: [{
+                  // display: false,
+                  gridLines: {
+                    display: true,
+                    lineWidth: '4px',
+                    color: 'rgba(0, 0, 0, .2)',
+                    zeroLineColor: 'transparent'
+                  },
+                  ticks: $.extend({
+                    beginAtZero: true,
+                    suggestedMax: 100
+                  }, ticksStyle)
+                }],
+                xAxes: [{
+                  display: true,
+                  gridLines: {
+                    display: false
+                  },
+                  ticks: ticksStyle
+                }]
+              }
+            }
+          })
+
+      }
+  });
+
+  // for Bar Chart
+  $.ajax({
+      url: 'api/farmersByRegion',
+      type: 'GET',
+      success: function(response) {
+          var obj = JSON.parse(response);
+          
+          keysForBarChart = Object.keys(obj);
+          valuesForBarChart = Object.values(obj);
+
+          // For chart
+          var ticksStyle = {
+            fontColor: '#495057',
+            fontStyle: 'bold'
+          }
+
+          var mode = 'index'
+          var intersect = true
+
+          var $salesChart = $('#farmer-chart')
+          var salesChart = new Chart($salesChart, {
+            type: 'bar',
+            data: {
+              labels: keysForBarChart,
+              datasets: [
+                {
+                  backgroundColor: '#007bff',
+                  borderColor: '#007bff',
+                  data: valuesForBarChart
+                }
+              ]
+            },
+            options: {
+              maintainAspectRatio: false,
+              tooltips: {
+                mode: mode,
+                intersect: intersect
+              },
+              hover: {
+                mode: mode,
+                intersect: intersect
+              },
+              legend: {
+                display: false
+              },
+              scales: {
+                yAxes: [{
+                  // display: false,
+                  gridLines: {
+                    display: true,
+                    lineWidth: '4px',
+                    color: 'rgba(0, 0, 0, .2)',
+                    zeroLineColor: 'transparent'
+                  },
+                  ticks: $.extend({
+                    beginAtZero: true,
+
+                    // Include a dollar sign in the ticks
+                    callback: function (value) {
+                      if (value >= 1000) {
+                        value /= 1000
+                        value += 'k'
+                      }
+
+                      return value
+                    }
+                  }, ticksStyle)
+                }],
+                xAxes: [{
+                  display: true,
+                  gridLines: {
+                    display: false
+                  },
+                  ticks: ticksStyle
+                }]
+              }
+            }
+          })
+        }
+  });
+
+  
+</script>
+<!-- <script src="assets/js/pages/dashboard3.js"></script> -->
+<script type="text/javascript">
+  // For Counter
+  $.ajax({
+            url: 'api/dashboard/1',
+            type: 'GET',
+            success: function(response) {
+              var obj = JSON.parse(response);
+              $('#operator_count').text(obj.officers);
+              $('#advertising_count').html(obj.products+'<sup style="font-size: 20px">%</sup>');
+              $('#farmer_count').text(obj.farmers);
+              $('#query_count').text(obj.queries);
+              //document.getElementById('operator_count').innerHTML(obj.officers);
+                          
+            }
+        });
+
+// For Product List
+  $.ajax({
+      url: 'api/advertisingcrops',
+      type: "GET",
+      success: function(data) {
+              $('#product-tbody').html('');
+              $.each(data, function(key, value) {
+                $('#product-tbody').append(`
+                    <tr>
+                      <td>
+                        `+value.cropname+`
+                      </td>
+                      <td>$`+value.cropprice+`</td>
+                      <td>
+                        `+value.cropqty+`kg
+                      </td>
+                      <td>
+                        `+value.expecteddate+`
+                      </td>
+                    </tr>
+                `);
+              });  
+            }
+        });
+
+  // For Query List
+  $.ajax({
+      url: 'api/queries',
+      type: "GET",
+      success: function(data) {
+              $('#queries-tbody').html('');
+              var data = JSON.parse(data);
+              $.each(data, function(key, value) {
+                $('#queries-tbody').append(`
+                    <tr>
+                      <td>
+                        `+value.farmername+`
+                      </td>
+                      <td>`+value.officername+`</td>
+                      <td>
+                        `+value.farmerquery+`kg
+                      </td>
+                      <td>
+                        `+value.date+`
+                      </td>
+                    </tr>
+                `);
+              });  
+            }
+        });
+</script>
 @stop
 
