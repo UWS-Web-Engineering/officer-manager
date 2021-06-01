@@ -12,10 +12,11 @@ class negotiations extends Controller
     function negotiate($req)
     {
         return DB::table('offers')
-        ->join('farmers','offers.farmerid','=','farmers.id')
-        ->join('crops','offers.cropid','=','crops.id')
-        ->select('crops.cropname','farmers.farmername','offers.id','offers.expecteddate','crops.cropstatus','offers.rejected','crops.cropstatus')
+        ->leftjoin('farmers','farmers.id','=','offers.farmerid')
+        ->leftjoin('crops','crops.id','=','offers.cropid')
+        ->select('crops.cropname','farmers.farmername','offers.*','offers.expecteddate','crops.cropstatus','offers.rejected','crops.cropstatus')
         ->where([['offers.rejected','=',0],['offers.officerid','=',$req]])
+
         ->get();
     }
     function negotiate_dets($req)

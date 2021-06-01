@@ -13,7 +13,9 @@ xmlhttp.onload = function () {
             document.location.href = "/farmer_response/" + ids[pos]
         });
     });
+    
 };
+xmlhttp.send();
 let ids = []
 function loadAPI(xml) {
     var table = "<table><tr><th>Crop</th><th>Farmer</th><th>Fulfill By</th><th>Status</th></tr>";
@@ -38,7 +40,7 @@ function loadAPI(xml) {
     table += "</table>";
     loadTable.insertAdjacentHTML('beforeend', table);
 }
-xmlhttp.send();
+
 function logout()
 {
     $.ajax({
