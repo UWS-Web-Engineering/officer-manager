@@ -3,7 +3,7 @@ var managerids = []
 let list = document.querySelector("#listofCompanies")
 // var list = document.getElementById('listofCompanies');
 var xmlhttp = new XMLHttpRequest();
-xmlhttp.open("GET", "https://gateway.include.ninja/api/officer-manager/getmanagers");
+xmlhttp.open("GET", "https://officermanager.include.ninja/api/getmanagers");
 xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
 xmlhttp.onload = function () {
     console.log(xmlhttp.responseText)
