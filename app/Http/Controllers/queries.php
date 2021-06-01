@@ -37,7 +37,7 @@ class queries extends Controller
         $emp=new message();
         $emp->farmerid=$req->farmerid;
         $emp->officermessage=$req->mymessage;
-        $emp->officerid=1;
+        $emp->officerid=$req->officerid;
         $emp->isread= false;
         
         $resp=$emp->save();
@@ -67,17 +67,17 @@ class queries extends Controller
         ->join('officers', 'messages.officerid', '=', 'officers.id')
         ->join('farmers', 'messages.farmerid', '=', 'farmers.id')
         ->select('messages.*', 'farmers.farmername', 'officers.officername')
-        ->where([['crops.officerid', '=',$req->officerid],['crops.farmerid', '=',$req->farmerid]])
+        ->where([['messages.officerid', '=',$req->officerid],['messages.farmerid', '=',$req->farmerid]])
         ->orderBy('id','asc')
         ->get();
     }
     function get_all_queries($req)
     {
         return DB::table('messages')
-        ->join('officers', 'messages.officerid', '=', 'officers.id')
-        ->join('farmers', 'messages.farmerid', '=', 'farmers.id')
-        ->select('messages.*', 'farmers.farmername', 'officers.officername')
-        ->where('crops.farmerid', '=',$req)
+       ->leftjoin('officers', 'messages.officerid', '=', 'officers.id')
+        // ->join('farmers', 'messages.farmerid', '=', 'farmers.id')
+        ->select('messages.*', 'officers.officername')
+        ->where('messages.farmerid', '=',$req)
         ->orderBy('id','asc')
         ->get();
     }

@@ -27,8 +27,9 @@ function myFunction() {
 var loadTable = document.getElementById('myTable');
 let ids = []
 var xmlhttp = new XMLHttpRequest();
+
+xmlhttp.open("GET", "https://gateway.include.ninja/api/officer-manager/farmerslist");
 xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
-xmlhttp.open("GET", "/api/farmerslist");
 xmlhttp.onload = function () {
     loadAPI(JSON.parse(xmlhttp.responseText));
     $(document).ready(function ($) {
@@ -44,25 +45,19 @@ xmlhttp.onload = function () {
 function loadAPI(xml) {
     var j = 0;
     console.log(xml)
-    var table = "<table><tr><th>Farmer Name</th><th>Last Name</th><th>Email</th><th>Contact Number</th><th>Farm Size</th><th>Date of Birth</th><th>Number of Crops</th><th>Address</th></tr>";
+    var table = "<table><tr><th>Farmer Name</th><th>Crop Name</th><th>Expected Date</th><th>Farmer Address</th><th>Region Id</th></tr>";
     for (var i = 0; i < xml.length; i++) {
         ids.push(xml[i].id)
         table += "<tr><td>" +
             xml[i].farmername +
             "</td><td>" +
-            xml[i].lastName +
+            xml[i].cropname +
             "</td><td>" +
-            xml[i].email +
+            xml[i].expecteddate +
             "</td><td>" +
-            xml[i].contactNumber +
+            xml[i].farmeraddress +
             "</td><td>" +
-            xml[i].age +
-            "</td><td>" +
-            xml[i].dob +
-            "</td><td>" +
-            xml[i].salary +
-            "</td><td>" +
-            xml[i].address +
+            xml[i].regionid +
             "</td></tr>";
     }
     table += "</table>";
@@ -77,7 +72,7 @@ function logout()
         type: "POST",
         headers: {"Authorization": localStorage.getItem('token')},
         contentType: "application/json",
-        url: "https://usercontroller.include.ninja/api/logout",
+        url: "https://gateway.include.ninja/api/usercontroller/logout",
         dataType: "json",
         success: function (response) {
             localStorage.clear();

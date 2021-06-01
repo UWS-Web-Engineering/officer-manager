@@ -50,13 +50,14 @@ function opensuccess()
         prodimg:document.getElementById('prodname').value,
         prodprice: document.getElementById('prodprice').value,
         prodqty: document.getElementById('prodqty').value,
-        prodfulfill:today
+        prodfulfill:today,
+        officerid:localStorage.getItem('officerid')
     }
     console.log(product);
     let json = JSON.stringify(product);
 
     const xhr = new XMLHttpRequest(); 
-    xhr.open("POST", "api/product");
+    xhr.open("POST", "https://gateway.include.ninja/api/officer-manager/product");
     xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
     xhr.setRequestHeader("Content-Type", "application/json");// add token in header
     xhr.send(json);
@@ -76,12 +77,12 @@ function closesuccess()
 
 var loadTable = document.getElementById('myTable');
 var xmlhttp = new XMLHttpRequest();
+xmlhttp.open("GET","https://gateway.include.ninja/api/officer-manager/products/"+localStorage.getItem('officerid'));
 xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
-xmlhttp.open("GET", "/api/products");
 xmlhttp.onload = function() {
     loadAPI(JSON.parse(xmlhttp.responseText));
 };
-xmlhttp.send();
+
 function loadAPI(xml) {
     let status;
     console.log(xml)
@@ -114,7 +115,7 @@ function loadAPI(xml) {
     table += "</table>";
     loadTable.insertAdjacentHTML('beforeend', table);
 }
-
+xmlhttp.send();
 
 function logout()
 {
@@ -123,7 +124,7 @@ function logout()
         type: "POST",
         headers: {"Authorization": localStorage.getItem('token')},
         contentType: "application/json",
-        url: "https://usercontroller.include.ninja/api/logout",
+        url: "https://gateway.include.ninja/api/usercontroller/logout",
         dataType: "json",
         success: function (response) {
             localStorage.clear();

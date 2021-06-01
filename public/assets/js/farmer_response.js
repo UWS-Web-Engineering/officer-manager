@@ -2,9 +2,10 @@ var companyname = document.getElementById("companyname");
 var lscompanyname = document.createTextNode(localStorage.getItem('companyname'));
 companyname.appendChild(lscompanyname);
 var xmlhttp = new XMLHttpRequest();
-var t = "/api" + document.location.pathname.toString();
-xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
+var t = "https://gateway.include.ninja/api/officer-manager" + document.location.pathname.toString();
+
 xmlhttp.open("GET", t);
+xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
 var offerid;
 xmlhttp.onload = function () {
     loadAPI(JSON.parse(xmlhttp.responseText));
@@ -12,16 +13,15 @@ xmlhttp.onload = function () {
     xmlhttp.abort();
 }
 function loadAPI(xml) {
-    var QnA=['You have already countered this offer. Please wait for farmer to respond. ','Do you accept this offer?']
+    var QnA = ['You have already countered this offer. Please wait for farmer to respond. ', 'Do you accept this offer?']
     for (var i = 0; i < xml.length; i++) {
         offerid = xml[i].id
         document.getElementById('farmername').prepend(document.createTextNode(xml[i].farmername.toString()));
-        if(xml[i].negotiation==0)
-        {
+        if (xml[i].negotiation == 0) {
             document.getElementById('qna').innerHTML = QnA[0];
             document.getElementById('action_button').style.display = "none";
         }
-        else{
+        else {
             document.getElementById('qna').innerHTML = QnA[1];
             document.getElementById('action_button').style.display = "block";
         }
@@ -73,9 +73,9 @@ function opensuccess() {
     // console.log(document.location.pathname = "api/counter")
     $.ajax({
         type: "PUT",   //type is any HTTP method
-        headers: {"Authorization": localStorage.getItem('token')},
-        contentType: "application/json; charset=utf-8",
-        url: "/api/counter",    //Your api url
+        headers: { "Authorization": localStorage.getItem('token') },
+        contentType: "application/json",
+        url: "https://gateway.include.ninja/api/officer-manager/counter",    //Your api url
         data: JSON.stringify(product),   //Data as js object
         dataType: "json",
         success: function () {
@@ -107,13 +107,15 @@ function openaction() {
 function acceptoffer() {
     let product
     xmlhttp.open("GET", t);
+    xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
     xmlhttp.onload = function () {
         offerdets = JSON.parse(xmlhttp.responseText);
+        console.log(offerdets)
         for (var i = 0; i < offerdets.length; i++) {
             product = {
                 id: offerdets[i].cropid,
                 prodname: offerdets[i].cropname,
-                prodprice: offerdets[i].cropprice,
+                prodprice: parseInt(offerdets[i].cropprice),
                 prodqty: offerdets[i].cropqty,
                 prodfulfill: offerdets[i].expecteddate,
                 farmerid: offerdets[i].farmerid
@@ -122,9 +124,10 @@ function acceptoffer() {
         console.log(product);
         // console.log(document.location.pathname = "api/counter")
         $.ajax({
-            type: "PUT",   //type is any HTTP method
-            contentType: "application/json; charset=utf-8",
-            url: "/api/accept",    //Your api url
+            type: "PUT",
+            headers: { "Authorization": localStorage.getItem('token') },   //type is any HTTP method
+            contentType: "application/json",
+            url: "https://gateway.include.ninja/api/officer-manager/accept",    //Your api url
             data: JSON.stringify(product),   //Data as js object
             dataType: "json",
             success: function () {
@@ -136,10 +139,10 @@ function acceptoffer() {
     }
     xmlhttp.send();
 }
-function rejectoffer()
-{
+function rejectoffer() {
     let product
     xmlhttp.open("GET", t);
+    xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
     xmlhttp.onload = function () {
         offerdets = JSON.parse(xmlhttp.responseText);
         for (var i = 0; i < offerdets.length; i++) {
@@ -151,8 +154,8 @@ function rejectoffer()
         // console.log(document.location.pathname = "api/counter")
         $.ajax({
             type: "PUT",   //type is any HTTP method
-            contentType: "application/json; charset=utf-8",
-            url: "/api/reject",    //Your api url
+            contentType: "application/json",
+            url: "https://gateway.include.ninja/api/officer-manager/reject",    //Your api url
             data: JSON.stringify(product),   //Data as js object
             dataType: "json",
             success: function () {

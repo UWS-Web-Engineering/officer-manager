@@ -3,7 +3,7 @@ var lscompanyname = document.createTextNode(localStorage.getItem('companyname'))
 companyname.appendChild(lscompanyname);
 var loadTable = document.getElementById('myTable');
 var xmlhttp = new XMLHttpRequest();
-xmlhttp.open("GET", "/api/negotiations");
+xmlhttp.open("GET", "https://gateway.include.ninja/api/officer-manager/negotiations/"+localStorage.getItem('officerid'));
 xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
 xmlhttp.onload = function () {
     loadAPI(JSON.parse(xmlhttp.responseText));
@@ -13,7 +13,9 @@ xmlhttp.onload = function () {
             document.location.href = "/farmer_response/" + ids[pos]
         });
     });
+    
 };
+xmlhttp.send();
 let ids = []
 function loadAPI(xml) {
     var table = "<table><tr><th>Crop</th><th>Farmer</th><th>Fulfill By</th><th>Status</th></tr>";
@@ -21,7 +23,7 @@ function loadAPI(xml) {
         let status;
         
         console.log(xml[i])
-        if (xml[i].cropstatus == null && xml[i].rejected==0) {
+        if (xml[i].cropstatus == null && xml[i].rejected==null) {
             ids.push(xml[i].id)
             status = "In Progress"
             table += "<tr><td>" +
@@ -38,7 +40,7 @@ function loadAPI(xml) {
     table += "</table>";
     loadTable.insertAdjacentHTML('beforeend', table);
 }
-xmlhttp.send();
+
 function logout()
 {
     $.ajax({
@@ -46,7 +48,7 @@ function logout()
         type: "POST",
         headers: {"Authorization": localStorage.getItem('token')},
         contentType: "application/json",
-        url: "https://usercontroller.include.ninja/api/logout",
+        url: "https://gateway.include.ninja/api/usercontroller/logout",
         dataType: "json",
         success: function (response) {
             window.location="/"
