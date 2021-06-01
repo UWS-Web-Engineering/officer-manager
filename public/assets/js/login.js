@@ -4,6 +4,7 @@ let list = document.querySelector("#listofCompanies")
 // var list = document.getElementById('listofCompanies');
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.open("GET", "https://gateway.include.ninja/api/officer-manager/getmanagers");
+xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
 xmlhttp.onload = function () {
     console.log(xmlhttp.responseText)
     loadAPI(JSON.parse(xmlhttp.responseText));
@@ -89,7 +90,7 @@ function signup() {
     $.ajax({
 
         type: "POST",
-        headers: { 'Accept': 'application/json' },
+        headers: {"Authorization": localStorage.getItem('token'), 'Accept': 'application/json' },
         contentType: "application/json",
         url: "https://gateway.include.ninja/api/usercontroller/signup",
         data: json,
@@ -104,7 +105,7 @@ function signup() {
                     email: email,
                     usercontrollerid: localStorage.getItem('uc')
                 }
-                route = "/addmanager"
+                route = "https://gateway.include.ninja/api/officer-manager/addmanager"
             }
             else if (role == "Officer") {
                 var todb = {
@@ -113,7 +114,7 @@ function signup() {
                     email: email,
                     usercontrollerid: localStorage.getItem('uc')
                 }
-                route = "/addofficer"
+                route = "https://gateway.include.ninja/api/officer-manager/addofficer"
             }
 
             var jsontodb = JSON.stringify(todb);
@@ -123,7 +124,7 @@ function signup() {
                 type: "POST",
                 headers: { "Authorization": localStorage.getItem('token') },
                 contentType: "application/json",
-                url: "/api" + route,
+                url:  route,
                 data: jsontodb,
                 dataType: "json",
                 success: function (response) {
@@ -156,7 +157,7 @@ function login() {
     $.ajax({
 
         type: "POST",
-        headers: { 'Accept': 'application/json' },
+        headers: { "Authorization": localStorage.getItem('token'),'Accept': 'application/json' },
         contentType: "application/json",
         url: "https://gateway.include.ninja/api/usercontroller/login",
         data: json,
@@ -166,7 +167,8 @@ function login() {
             localStorage.setItem('token', "Bearer " + response.token);
             if (response.user.userRole == "Officer") {
                 var xmlhttp1 = new XMLHttpRequest();
-                xmlhttp1.open("GET", "/api/getofficerid/" + localStorage.getItem('uc'));
+                xmlhttp1.open("GET", "https://gateway.include.ninja/api/officer-manager/getofficerid/" + localStorage.getItem('uc'));
+                xmlhttp1.setRequestHeader('Authorization', localStorage.getItem('token'));
                 xmlhttp1.onload = function () {
                     console.log(xmlhttp1.responseText)
                     localStorage.setItem('officerid',JSON.parse(xmlhttp1.responseText)[0].id)
@@ -188,13 +190,14 @@ function login() {
                 //     }
                 // });
                 xmlhttp1.send();
-                window.location = "/home"
+                window.location = "https://gateway.include.ninja/api/officer-manager/home"
             }
             
             else if(response.user.userRole == "Manager")
             {
                 var xmlhttp2 = new XMLHttpRequest();
-                xmlhttp2.open("GET", "/api/getmanagerid/" + localStorage.getItem('uc'));
+                xmlhttp2.open("GET", "https://gateway.include.ninja/api/officer-manager/getmanagerid/" + localStorage.getItem('uc'));
+                xmlhttp2.setRequestHeader('Authorization', localStorage.getItem('token'));
                 xmlhttp2.onload = function () {
                     console.log(JSON.parse(xmlhttp2.responseText)[0].id)
                     localStorage.setItem('managerid',JSON.parse(xmlhttp2.responseText)[0].id)
@@ -203,7 +206,7 @@ function login() {
                     // xmlhttp2.abort();
                 };
                 xmlhttp2.send();
-                window.location = "/dashboard"
+                window.location = "https://gateway.include.ninja/api/officer-manager/dashboard"
             }
             
             
