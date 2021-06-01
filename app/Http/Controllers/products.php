@@ -10,11 +10,12 @@ use SebastianBergmann\Environment\Console;
 
 class products extends Controller
 {
-    function getproduct()
+    function getproduct($req)
     {
         return DB::table('crops')
         ->leftJoin('offers','offers.cropid','=','crops.id')
         ->select('crops.*','offers.officerid','offers.negotiation','crops.cropstatus')
+        ->where('crops.officerid','=',$req)
         ->get();
         //return crop::all();
     }
