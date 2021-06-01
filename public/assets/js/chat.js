@@ -59,7 +59,7 @@ function newMessage() {
     $.ajax({
         type: "POST",
         headers: {"Authorization": localStorage.getItem('token')},  //type is any HTTP method
-        contentType: "application/json; charset=utf-8",
+        contentType: "application/json",
         url: "https://gateway.include.ninja/api/officer-manager/startmessage",    //Your api url
         data: JSON.stringify(messagejson),   //Data as js object
         dataType: "json",

@@ -50,7 +50,7 @@ Route::get("get_all_crops_farmers/{farmerid}",[products::class,'get_all_crops_fa
 Route::get("get_managers_for_farmers",[products::class,'get_managers_for_farmers']);
 Route::get("get_officers_under_manager",[farmers::class,'get_officers_under_manager']);
 Route::get("get_all_dets",[farmers::class,'get_all_dets']);
-Route::get("get_all_queries",[queries::class,"get_all_queries"]);
+Route::get("get_all_queries/{farmerid}",[queries::class,"get_all_queries"]);
 Route::get("get_all_queries_by_officer",[queries::class,'get_all_queries_by_officer']);
 
 Route::post("addfarmers", [farmers::class,'addfarmers']);

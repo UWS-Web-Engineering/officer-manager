@@ -74,10 +74,10 @@ class queries extends Controller
     function get_all_queries($req)
     {
         return DB::table('messages')
-        ->join('officers', 'messages.officerid', '=', 'officers.id')
-        ->join('farmers', 'messages.farmerid', '=', 'farmers.id')
-        ->select('messages.*', 'farmers.farmername', 'officers.officername')
-        ->where('crops.farmerid', '=',$req)
+       ->leftjoin('officers', 'messages.officerid', '=', 'officers.id')
+        // ->join('farmers', 'messages.farmerid', '=', 'farmers.id')
+        ->select('messages.*', 'officers.officername')
+        ->where('messages.farmerid', '=',$req)
         ->orderBy('id','asc')
         ->get();
     }

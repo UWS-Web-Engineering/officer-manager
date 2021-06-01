@@ -74,7 +74,7 @@ function opensuccess() {
     $.ajax({
         type: "PUT",   //type is any HTTP method
         headers: { "Authorization": localStorage.getItem('token') },
-        contentType: "application/json; charset=utf-8",
+        contentType: "application/json",
         url: "https://gateway.include.ninja/api/officer-manager/counter",    //Your api url
         data: JSON.stringify(product),   //Data as js object
         dataType: "json",
@@ -126,7 +126,7 @@ function acceptoffer() {
         $.ajax({
             type: "PUT",
             headers: { "Authorization": localStorage.getItem('token') },   //type is any HTTP method
-            contentType: "application/json; charset=utf-8",
+            contentType: "application/json",
             url: "https://gateway.include.ninja/api/officer-manager/accept",    //Your api url
             data: JSON.stringify(product),   //Data as js object
             dataType: "json",
@@ -154,7 +154,7 @@ function rejectoffer() {
         // console.log(document.location.pathname = "api/counter")
         $.ajax({
             type: "PUT",   //type is any HTTP method
-            contentType: "application/json; charset=utf-8",
+            contentType: "application/json",
             url: "https://gateway.include.ninja/api/officer-manager/reject",    //Your api url
             data: JSON.stringify(product),   //Data as js object
             dataType: "json",
