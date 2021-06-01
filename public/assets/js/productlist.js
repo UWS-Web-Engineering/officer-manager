@@ -1,4 +1,6 @@
-
+var companyname = document.getElementById("companyname");
+var lscompanyname = document.createTextNode(localStorage.getItem('companyname'));
+companyname.appendChild(lscompanyname);
 function myFunction() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
@@ -79,7 +81,7 @@ xmlhttp.open("GET", "/api/products");
 xmlhttp.onload = function() {
     loadAPI(JSON.parse(xmlhttp.responseText));
 };
-
+xmlhttp.send();
 function loadAPI(xml) {
     let status;
     console.log(xml)
@@ -112,7 +114,7 @@ function loadAPI(xml) {
     table += "</table>";
     loadTable.insertAdjacentHTML('beforeend', table);
 }
-xmlhttp.send();
+
 
 function logout()
 {

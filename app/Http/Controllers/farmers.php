@@ -42,4 +42,22 @@ class farmers extends Controller
         ->select('farmers.*','officers.*','crops.farmerid')
         ->get();
     }
+    function get_officers_under_manager(Request $req)
+    {
+        return DB::table('crops')
+        ->join('officers','officers.id','=','crops.officerid')
+        ->join('managers','officers.managerid','=','managers.id')
+        ->select('officers.id','officers.officername','managers.companyname')
+        ->where([['managers.id', '=',$req->managerid],['crops.farmerid', '=',$req->farmerid]])
+        ->get();
+    }
+    function get_all_dets(Request $req)
+    {
+        return DB::table('crops')
+        ->join('officers','officers.id','=','crops.officerid')
+        ->join('managers','officers.managerid','=','managers.id')
+        ->select('officers.id','officers.officername','crops.cropname','crops.expecteddate','crops.cropqty','crops.cropprice')
+        ->where([['crops.officerid', '=',$req->officerid],['crops.farmerid', '=',$req->farmerid]])
+        ->get();
+    }
 }

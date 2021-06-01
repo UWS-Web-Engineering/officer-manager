@@ -1,7 +1,10 @@
 <head>
     <link rel="stylesheet" href="/assets/css/login.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/assets/js/login.js"></script>
+    <link rel="stylesheet" href="/assets/css/farmerslist.css">
+
+    <link rel="stylesheet" href="/assets/css/productlist.css">
+
+    
 </head>
 <div class="login-wrap">
     <div class="login-html">
@@ -24,10 +27,6 @@
                 <div class="group">
                     <Button type="submit" class="button" value="Sign In" onclick="login()">Login</Button>
                 </div>
-                <div class="hr"></div>
-                <div class="foot-lnk">
-                    <a href="#forgot">Forgot Password?</a>
-                </div>
             </div>
             <div class="sign-up-htm">
                 <div id="roles" class="group">
@@ -39,13 +38,14 @@
                     <label for="user" class="label">Company Name</label>
                     <input id="company_name" type="text" class="input">
                 </div>
-                <div class="group">
-                    <label for="user" class="label">First Name</label>
-                    <input id="firstname" type="text" class="input">
+                <div id="company" style="display:none" class="group">
+                    <label for="company" class="label">Company Name</label>
+                    <select id="listofCompanies" class="input">
+                    </select>
                 </div>
                 <div class="group">
-                    <label for="user" class="label">Surname</label>
-                    <input id="surname" type="text" class="input">
+                    <label for="user" class="label">Name</label>
+                    <input id="firstname" type="text" class="input">
                 </div>
                 <div class="group">
                     <label for="pass" class="label">Email Address</label>
@@ -60,13 +60,18 @@
                     <input id="cpass" type="password" class="input" data-type="password">
                 </div>
                 <div class="group">
-                    <button type="submit" class="button" value="Sign Up" onclick="signup()">Sign Up</button>
+                    <button id="signup" type="submit" class="button" value="Sign Up" onclick="signup()" disabled>Sign Up</button>
                 </div>
-                <div class="hr"></div>
-                <div class="foot-lnk">
-                    <label for="tab-1">Already Member?</a>
+            </div>
+            <div id="successmodal" class="modal">
+                <div style="width: 70%;height: 150px;" class="modal-content">
+                    <span onclick="closesuccess()" class="close-button">x</span>
+                    <h4 style="text-align: center;">You have successfully created your Account!</h4>
+                    <input style="position:absolute; left:42%" type="button" value="Close" onclick="closesuccess()">
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/js/login.js"></script>

@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html class=''>
 <div class="header">
-    <a href="/home" class="logo">Manager Mode</a>
+<a href="/home" class="logo" id="companyname"></a>
     <div class="header-right">
         <a href="/product">Product</a>
         <a href="/farmerslist">Farmers</a>

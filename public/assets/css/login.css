@@ -142,7 +142,7 @@ a {
 }
 
 .login-form .group .button {
-    background: #1161ee;
+    /* background: #1161ee; */
 }
 
 .login-form .group label .icon {
@@ -213,5 +213,18 @@ a {
 
 .button-toggle {
     font-weight: 700;
-    background: rgba(45, 96, 224, 0.9);
+    background: rgba(255, 255, 255, 0.4);
+}
+input[type=button] {
+    background-color: #1161ee;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+input[type=button]:hover {
+    background-color: #1161ee;
 }

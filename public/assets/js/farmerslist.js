@@ -1,3 +1,6 @@
+var companyname = document.getElementById("companyname");
+var lscompanyname = document.createTextNode(localStorage.getItem('companyname'));
+companyname.appendChild(lscompanyname);
 function myFunction() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
