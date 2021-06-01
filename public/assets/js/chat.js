@@ -82,8 +82,9 @@ $(window).on('keydown', function (e) {
 });
 
 var xmlhttp = new XMLHttpRequest();
-xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
+
 xmlhttp.open("GET", "/api/chat");
+xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
 var farmerid = [], pos;
 xmlhttp.onload = function () {
     loadAPI(JSON.parse(xmlhttp.responseText));

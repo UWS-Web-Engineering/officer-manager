@@ -76,12 +76,12 @@ function closesuccess()
 
 var loadTable = document.getElementById('myTable');
 var xmlhttp = new XMLHttpRequest();
-xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
 xmlhttp.open("GET", "/api/products");
+xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
 xmlhttp.onload = function() {
     loadAPI(JSON.parse(xmlhttp.responseText));
 };
-xmlhttp.send();
+
 function loadAPI(xml) {
     let status;
     console.log(xml)
@@ -114,7 +114,7 @@ function loadAPI(xml) {
     table += "</table>";
     loadTable.insertAdjacentHTML('beforeend', table);
 }
-
+xmlhttp.send();
 
 function logout()
 {

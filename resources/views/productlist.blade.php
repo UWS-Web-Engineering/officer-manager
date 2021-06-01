@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/assets/css/farmerdetails.css">
     <link rel="stylesheet" href="/assets/css/productlist.css">
     <link rel="stylesheet" href="/assets/css/product_ad.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
 </head>
 
@@ -100,7 +100,8 @@
             <input style="position:absolute; left:42%" type="button" value="Close" onclick="closesuccess()">
         </div>
     </div>
-    <script type="text/javascript" src="/assets/js/productlist.js"></script>
-</body>
+    
+</body><script type="text/javascript" src="/assets/js/productlist.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 </html>

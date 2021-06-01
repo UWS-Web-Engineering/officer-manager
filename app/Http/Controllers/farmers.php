@@ -60,4 +60,20 @@ class farmers extends Controller
         ->where([['crops.officerid', '=',$req->officerid],['crops.farmerid', '=',$req->farmerid]])
         ->get();
     }
+    function addfarmers(Request $req){
+        $farmers = new farmer();
+        $farmers->farmeremail = $req->farmeremail;
+        $farmers->farmername = $req->farmername;
+        $farmers->farmerphone = $req->farmerphone;
+        $farmers->farmeraddress = $req->farmeraddress;
+        $farmers->usercontrollerid = $req->usercontrollerid;
+        $farmers->regionId = $req->regionId;
+        $resp = $farmers->save();
+        $result = ["Result" => "Data was not successfully been saved"];
+        if ($resp){
+            $result = ["Result" => "Data was successfully saved"];
+        }
+
+        return $result;
+    }
 }

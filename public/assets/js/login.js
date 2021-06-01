@@ -3,7 +3,7 @@ var managerids = []
 let list = document.querySelector("#listofCompanies")
 // var list = document.getElementById('listofCompanies');
 var xmlhttp = new XMLHttpRequest();
-xmlhttp.open("GET", "/api/getmanagers");
+xmlhttp.open("GET", "https://gateway.include.ninja/api/officer-manager/getmanagers");
 xmlhttp.onload = function () {
     console.log(xmlhttp.responseText)
     loadAPI(JSON.parse(xmlhttp.responseText));
@@ -91,7 +91,7 @@ function signup() {
         type: "POST",
         headers: { 'Accept': 'application/json' },
         contentType: "application/json",
-        url: "https://usercontroller.include.ninja/api/signup",
+        url: "https://gateway.include.ninja/api/usercontroller/signup",
         data: json,
         dataType: "json",
         success: function (response) {
@@ -158,7 +158,7 @@ function login() {
         type: "POST",
         headers: { 'Accept': 'application/json' },
         contentType: "application/json",
-        url: "https://usercontroller.include.ninja/api/login",
+        url: "https://gateway.include.ninja/api/usercontroller/login",
         data: json,
         dataType: "json",
         success: function (response) {
