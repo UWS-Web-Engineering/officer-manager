@@ -50,7 +50,8 @@ function opensuccess()
         prodimg:document.getElementById('prodname').value,
         prodprice: document.getElementById('prodprice').value,
         prodqty: document.getElementById('prodqty').value,
-        prodfulfill:today
+        prodfulfill:today,
+        officerid:localStorage.getItem('officerid')
     }
     console.log(product);
     let json = JSON.stringify(product);
