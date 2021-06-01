@@ -61,4 +61,24 @@ class queries extends Controller
         }
         return $result;
     }
+    function get_all_queries_by_officer(Request $req)
+    {
+        return DB::table('messages')
+        ->join('officers', 'messages.officerid', '=', 'officers.id')
+        ->join('farmers', 'messages.farmerid', '=', 'farmers.id')
+        ->select('messages.*', 'farmers.farmername', 'officers.officername')
+        ->where([['crops.officerid', '=',$req->officerid],['crops.farmerid', '=',$req->farmerid]])
+        ->orderBy('id','asc')
+        ->get();
+    }
+    function get_all_queries($req)
+    {
+        return DB::table('messages')
+        ->join('officers', 'messages.officerid', '=', 'officers.id')
+        ->join('farmers', 'messages.farmerid', '=', 'farmers.id')
+        ->select('messages.*', 'farmers.farmername', 'officers.officername')
+        ->where('crops.farmerid', '=',$req)
+        ->orderBy('id','asc')
+        ->get();
+    }
 }
