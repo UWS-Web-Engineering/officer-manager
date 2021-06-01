@@ -2,8 +2,7 @@
     <link rel="stylesheet" href="/assets/css/farmerslist.css">
     <link rel="stylesheet" href="/assets/css/product_ad.css">
     <link rel="stylesheet" href="/assets/css/productlist.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/assets/js/farmer_response.js"></script>
+    
 </head>
 
 <body>
@@ -158,3 +157,5 @@
         </div>
     </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/js/farmer_response.js"></script>
