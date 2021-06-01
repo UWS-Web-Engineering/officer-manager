@@ -67,7 +67,7 @@ class farmers extends Controller
         $farmers->farmerphone = $req->farmerphone;
         $farmers->farmeraddress = $req->farmeraddress;
         $farmers->usercontrollerid = $req->usercontrollerid;
-        $farmers->regionId = $req->regionId;
+        $farmers->regionid = $req->regionid;
         $resp = $farmers->save();
         $result = ["Result" => "Data was not successfully been saved"];
         if ($resp){
