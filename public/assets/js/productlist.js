@@ -76,7 +76,7 @@ function closesuccess()
 
 var loadTable = document.getElementById('myTable');
 var xmlhttp = new XMLHttpRequest();
-xmlhttp.open("GET", "https://gateway.include.ninja/api/officer-manager/products");
+xmlhttp.open("GET","https://gateway.include.ninja/api/officer-manager/products/"+localStorage.getItem('officerid'));
 xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
 xmlhttp.onload = function() {
     loadAPI(JSON.parse(xmlhttp.responseText));
