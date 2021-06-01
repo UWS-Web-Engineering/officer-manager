@@ -56,9 +56,10 @@ function newMessage() {
     }
     console.log(messagejson)
     $.ajax({
-        type: "POST",   //type is any HTTP method
+        type: "POST",
+        headers: {"Authorization": localStorage.getItem('token')},  //type is any HTTP method
         contentType: "application/json; charset=utf-8",
-        url: "/api/startmessage",    //Your api url
+        url: "https://gateway.include.ninja/api/officer-manager/startmessage",    //Your api url
         data: JSON.stringify(messagejson),   //Data as js object
         dataType: "json",
         success: function () {
@@ -83,7 +84,7 @@ $(window).on('keydown', function (e) {
 
 var xmlhttp = new XMLHttpRequest();
 
-xmlhttp.open("GET", "/api/chat");
+xmlhttp.open("GET", "https://gateway.include.ninja/api/officer-manager/chat");
 xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
 var farmerid = [], pos;
 xmlhttp.onload = function () {
@@ -99,8 +100,9 @@ xmlhttp.onload = function () {
             $('.messages ul li').remove();
 
             var xmlhttp1 = new XMLHttpRequest();
-            chatpath = "/api/chat/" + farmerid[pos]
+            chatpath = "https://gateway.include.ninja/api/officer-manager/chat/" + farmerid[pos]
             xmlhttp1.open("GET", chatpath);
+            xmlhttp1.setRequestHeader('Authorization', localStorage.getItem('token'));
             xmlhttp1.onload = function () {
                 var y = JSON.parse(xmlhttp1.responseText);
                 for (var i = 0; i < y.length; i++) {
@@ -160,7 +162,7 @@ function logout()
         type: "POST",
         headers: {"Authorization": localStorage.getItem('token')},
         contentType: "application/json",
-        url: "https://usercontroller.include.ninja/api/logout",
+        url: "https://gateway.include.ninja/api/usercontroller/logout",
         dataType: "json",
         success: function (response) {
             localStorage.clear();

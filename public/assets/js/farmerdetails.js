@@ -2,10 +2,11 @@ var companyname = document.getElementById("companyname");
 var lscompanyname = document.createTextNode(localStorage.getItem('companyname'));
 companyname.appendChild(lscompanyname);
 var xmlhttp = new XMLHttpRequest();
-var t = "/api" + document.location.pathname.toString();
+var t = "https://gateway.include.ninja/api/officer-manager" + document.location.pathname.toString();
 console.log(t)
-xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
+
 xmlhttp.open("GET", t);
+xmlhttp.setRequestHeader('Authorization', localStorage.getItem('token'));
 var offerid;
 xmlhttp.onload = function () {
     loadAPI(JSON.parse(xmlhttp.responseText));
