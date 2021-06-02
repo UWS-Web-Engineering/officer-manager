@@ -64,7 +64,7 @@
   $(function(){
       // Get Officers Listing
       $.ajax({
-        url: 'api/officers/1',
+        url: 'https://gateway.include.ninja/api/officer-manager/officers/1',
         type: "GET",
         success: function(data) {
                 $('#officers-tbody').html('');

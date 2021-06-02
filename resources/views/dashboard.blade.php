@@ -209,7 +209,7 @@
   var keysForBarChart,valuesForBarChart;
   var a;
   $.ajax({
-      url: 'api/cropsByRegion',
+      url: 'https://gateway.include.ninja/api/officer-manager/cropsByRegion',
       type: 'GET',
       success: function(response) {
           var obj = JSON.parse(response);
@@ -282,7 +282,7 @@
 
   // for Bar Chart
   $.ajax({
-      url: 'api/farmersByRegion',
+      url: 'https://gateway.include.ninja/api/officer-manager/farmersByRegion',
       type: 'GET',
       success: function(response) {
           var obj = JSON.parse(response);
@@ -367,7 +367,7 @@
 <script type="text/javascript">
   // For Counter
   $.ajax({
-            url: 'api/dashboard/1',
+            url: 'https://gateway.include.ninja/api/officer-manager/dashboard/1',
             type: 'GET',
             success: function(response) {
               var obj = JSON.parse(response);
@@ -382,7 +382,7 @@
 
 // For Product List
   $.ajax({
-      url: 'api/advertisingcrops',
+      url: 'https://gateway.include.ninja/api/officer-manager/advertisingcrops',
       type: "GET",
       success: function(data) {
               $('#product-tbody').html('');
@@ -407,7 +407,7 @@
 
   // For Query List
   $.ajax({
-      url: 'api/queries',
+      url: 'https://gateway.include.ninja/api/officer-manager/queries',
       type: "GET",
       success: function(data) {
               $('#queries-tbody').html('');
@@ -420,10 +420,10 @@
                       </td>
                       <td>`+value.officername+`</td>
                       <td>
-                        `+value.farmerquery+`kg
+                        `+value.farmermessage+`
                       </td>
                       <td>
-                        `+value.date+`
+                        `+value.created_at+`
                       </td>
                     </tr>
                 `);

@@ -57,7 +57,7 @@
   $(function(){
       // Get Officers Listing
       $.ajax({
-      url: 'api/queries',
+      url: 'https://gateway.include.ninja/api/officer-manager/queries',
       type: "GET",
       success: function(data) {
               $('#queries-tbody').html('');
@@ -70,13 +70,13 @@
                       </td>
                       <td>`+value.officername+`</td>
                       <td>
-                        `+value.officerquery+`
+                        `+value.officermessage+`
                       </td>
                       <td>
-                        `+value.farmerquery+`
+                        `+value.farmermessage+`
                       </td>
                       <td>
-                        `+value.date+`
+                        `+value.created_at+`
                       </td>
                     </tr>
                 `);

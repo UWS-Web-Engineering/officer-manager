@@ -70,7 +70,7 @@
   $(function(){
       // Get Officers Listing
       $.ajax({
-        url: 'api/myfarmers',
+        url: 'https://gateway.include.ninja/api/officer-manager/myfarmers',
         type: "GET",
         success: function(data) {
                 $('#farmers-tbody').html('');
