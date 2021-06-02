@@ -53,11 +53,11 @@ class Manager extends Controller
 
     function farmerQueries(){
 
-    	$return = DB::table('queries')
-                        ->join('farmers','queries.farmerid','=','farmers.id')
-                        ->join('officers','queries.officerid','=','officers.id')
-                        ->select('farmers.farmername','officers.officername','queries.farmerquery','queries.date','queries.officerquery')
-                        ->orderBy('queries.id','desc')
+    	$return = DB::table('messages')
+                        ->join('farmers','messages.farmerid','=','farmers.id')
+                        ->join('officers','messages.officerid','=','officers.id')
+                        ->select('farmers.farmername','officers.officername','messages.officermessage','messages.created_at','messages.farmermessage')
+                        ->orderBy('messages.id','desc')
                         ->get();
 
    //  	$return = [
